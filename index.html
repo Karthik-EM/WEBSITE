@@ -25,7 +25,7 @@
 .header
     {
         background-color:var(--lblue) ;
-        width: 100vw;
+        width: 100%;
         height: 30px;
         font-size: 20px;
         display: flex;
@@ -34,12 +34,11 @@
     }
 .menue
 {
-    width: 100vw;
+    width: 100%;
     height: 26px;
     background-color: rgb(37, 45, 196);
     display: flex;
     align-items: center;
-    padding-left: 40px;
     gap: 40px;
 }
 .advanced:hover
@@ -78,14 +77,37 @@
     border: 2px solid black
 
 }
-.rightcontainer
+.rightcolumn
 {
-    width: 30vw;
+    width: 100%;
     height: 85vh;
+}
+.rightcontainersmall
+{
+    width: 100%;
+    height: 20vh;
     background-color: var(--bg);
     border: 2px solid black;
    
-   }
+}
+.rightcontainer
+{
+    width:100%;
+    height: 75.9%;
+    background-color: var(--bg);
+    border: 2px solid black;
+   
+}
+.footer
+    {
+        background-color:var(--lblue) ;
+        width: 100%;
+        height: 42px;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 </style>
 <body>
     <div class="header">BIOS SETUP UTILITY</div>
@@ -96,7 +118,11 @@
     </div>
     <div class="contents">
         <div class="largecontainer"></div>
-        <div class="rightcontainer"></div>
+        <div class="rightcolumn">
+            <div class="rightcontainersmall"></div>
+            <div class="rightcontainer"></div>
+        </div>
     </div>
+    <div class="footer">JUST DO IT</div>
 </body>
 </html>
