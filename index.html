@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,25 +8,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <style>
- *
-    {
+    * {
         margin: 0;
         padding: 0;
-        font-family:'Press Start 2P', cursive;
+        font-family: 'Press Start 2P', cursive;
         color: white;
-         
-        
-    }
-:root
- {
-    --bg:#aaaaaaff;
-    --bios-text: #00ff00;
-    --lblue: #00cccc;
-}
 
-.header
-    {
-        background-color:var(--lblue) ;
+
+    }
+
+    :root {
+        --bg: #aaaaaaff;
+        --bios-text: #00ff00;
+        --lblue: #00cccc;
+    }
+
+    .header {
+        background-color: var(--lblue);
         width: 100%;
         height: 30px;
         font-size: 20px;
@@ -33,62 +32,61 @@
         align-items: center;
         justify-content: center;
     }
-.menue
-{
-    width: 100%;
-    height: 26px;
-    background-color: #252dc4;
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
-.advanced:hover,
-.security:hover,
-.boot:hover {
-    background-color: var(--bg);
-    color: rgb(37, 45, 196);
-    padding-top: 4px;
-    padding-bottom: 4px;
-}
 
-.contents
-{
-    display: flex;
-    background-color: var(--bg);
-    padding: 4px;
-}
-.largecontainer
-{
-    width: 70vw;
-    height: 85vh;
-    background-color: var(--bg);
-    border: 2px solid black
+    .menue {
+        width: 100%;
+        height: 26px;
+        background-color: #252dc4;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+    }
 
-}
-.rightcolumn
-{
-    width: 100%;
-    height: 85vh;
-}
-.rightcontainersmall
-{
-    width: 100%;
-    height: 20vh;
-    background-color: var(--bg);
-    border: 2px solid black;
-   
-}
-.rightcontainer
-{
-    width:100%;
-    height: 75.9%;
-    background-color: var(--bg);
-    border: 2px solid black;
-   
-}
-.footer
-    {
-        background-color:var(--lblue) ;
+    .advanced:hover,
+    .security:hover,
+    .boot:hover {
+        background-color: var(--bg);
+        color: rgb(37, 45, 196);
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+
+    .contents {
+        display: flex;
+        background-color: var(--bg);
+        padding: 4px;
+    }
+
+    .largecontainer {
+        width: 70vw;
+        height: 85vh;
+        background-color: var(--bg);
+        border: 2px solid black
+    }
+
+    .rightcolumn {
+        width: 100%;
+        height: 85vh;
+    }
+
+    .rightcontainersmall {
+        width: 100%;
+        height: 20vh;
+        background-color: var(--bg);
+        border: 2px solid black;
+
+    }
+
+    .rightcontainer {
+        width: 100%;
+        height: 75.9%;
+        background-color: var(--bg);
+        border: 2px solid black;
+
+    }
+
+    .footer {
+        background-color: var(--lblue);
         width: 100%;
         height: 42px;
         font-size: 20px;
@@ -96,52 +94,103 @@
         align-items: center;
         justify-content: center;
     }
-.about h1,
-.skill h1,.edu h1 {
-  color: black;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  margin-left: 17px;
-}
-.skill h1{
-    margin-top: 30px;
-}
-.edu h1{
-    margin-top: 30px;
-}
-.about p{
-  
-  margin-bottom: 10px;
-  margin-top: 10px;
-  margin-left: 10px;
-  line-height: 1.6;
-}
-.skill ul,.edu ul{
-  margin-bottom: 10px;
-  margin-top: 10px;
-  margin-left: 25px;
-  line-height: 1.6;
-}
-.contact
-{
-    padding-left: 20px;
-    padding-top: 10px;
-}
-.contact h1 {
-  margin-bottom: 20px;
-}
- .contact ul li {
-    margin-bottom: 10px;
-  }
-.project
-{
-    padding-left: 10px;
-    padding-top: 10px;
-    line-height: 1.6; 
+
+    .about h1,
+    .skill h1,
+    .edu h1 {
+        color: black;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        margin-left: 17px;
+
+    }
+    .about p {
+
+        margin-bottom: 10px;
+        margin-top: 10px;
+        margin-left: 10px;
+        line-height: 1.6;
+    }
+.about {
+  padding: 2px;
 }
 
+    .about h1 {
+        margin-left: 0px;
+    }
+
+    .skill h1 {
+        margin-top: 30px;
+    }
+
+    .edu h1 {
+        margin-top: 30px;
+    }
+
+
+
+    .skill ul,
+    .edu ul {
+        margin-bottom: 10px;
+        margin-top: 10px;
+        margin-left: 25px;
+        line-height: 1.6;
+    }
+
+    .contact {
+        padding-left: 20px;
+        padding-top: 10px;
+    }
+
+    .contact h1 {
+        margin-bottom: 20px;
+    }
+
+    .contact ul li {
+        margin-bottom: 10px;
+    }
+
+    .project {
+        padding-left: 10px;
+        padding-top: 10px;
+        line-height: 1.6;
+    }
+
+    .about-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-left: 17px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .about-header svg {
+        width: 50px;
+        height: 50px;
+
+    }
+
+    .about-header h1,
+    .about-header svg path,
+    .about {
+        transition: color 0.3s ease, fill 0.3s ease, background-color 0.3s ease;
+    }
+
+    .about:hover {
+        background-color: black;
+    }
+
+    .about:hover .about-header h1 {
+        color: yellow;
+    }
+
+    .about:hover .about-header svg path {
+        fill: yellow;
+    }
 </style>
-<body>    
+
+<body>
     <div class="header">BIOS SETUP UTILITY</div>
     <div class="menue">
         <div class="advanced">ADVANCED</div>
@@ -151,51 +200,68 @@
     <div class="contents">
         <div class="largecontainer">
             <div class="about">
-                <h1>ABOUT ME</h1> 
-                    <p>
-                      <p>HOI!:)I'm Karthik  just a curious soul on Earth with a big love for tech.
-                      <p>Being a CSE student I'm just starting my journey in the world of coding, and I'm really enjoying learning how to build things from scratch.</p>
+                <div class="about-header">
+                    <h1>ABOUT ME</h1>
+                    <svg fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M10 2h4v4h-4V2zM7 7h10v2h-2v13h-2v-6h-2v6H9V9H7V7zM5 5v2h2V5H5zm0 0H3V3h2v2zm14 0v2h-2V5h2zm0 0V3h2v2h-2z">
+                    </svg>
+
+                </div>
+
+                <p>HOI!:)I'm Karthik just a curious soul on Earth with a big love for tech.</p>
+                <p>Being a CSE student I'm just starting my journey in the world of coding, and I'm really enjoying
+                    learning how to build things from scratch.</p>
             </div>
             <div class="skill">
                 <h1>SKILLS</h1>
                 <ul>
-                <li>HTML / CSS</li>
-                <li>Python</li>
-                <li>c/c++</li>
-                <li>Problem Solving</li>
-                <li>Debugging (and Googling well ;)</li>
+                    <li>HTML / CSS</li>
+                    <li>Python</li>
+                    <li>c/c++</li>
+                    <li>Problem Solving</li>
+                    <li>Debugging (and Googling well ;)</li>
                 </ul>
             </div>
             <DIV class="edu">
                 <h1 class="qualification">QUALIFICATION</h1>
                 <ul>
-                <li>BTECH in Computer Science</li>
-              <p>Adi Shankara Institute of Engineering Technology
-                College in Kalady, Kerala, 2022 – 2026
+                    <li>BTECH in Computer Science</li>
+                    <p>Adi Shankara Institute of Engineering Technology
+                        College in Kalady, Kerala, 2022 – 2026
                 </ul>
             </DIV>
         </div>
         <div class="rightcolumn">
             <div class="rightcontainersmall">
                 <div class="contact">
-                <h1 style="color: black;">CONTACT</h1>
-                <ul>
-                    <li>Email:<span style="color:#3d43b6e2;">karthikemmail@gmail.com</span></li>
-                    <li>GitHub:<a href="https://github.com/Karthik-EM" style="text-decoration: none;color:#3d43b6e2;">https://github.com/Karthik-EM</a></li>
-                    <li>LinkedIn:<a href="https://www.linkedin.com/in/karthik-e-m-33449a292/" style="text-decoration: none;color:#3d43b6e2;">linkedin.com/in/karthik</a></li>
-                </ul>
-             </div>
+                    <h1 style="color: black;">CONTACT</h1>
+                    <ul>
+                        <li>Email:<span style="color:#3d43b6e2;">karthikemmail@gmail.com</span></li>
+                        <li>GitHub:<a href="https://github.com/Karthik-EM"
+                                style="text-decoration: none;color:#3d43b6e2;">https://github.com/Karthik-EM</a></li>
+                        <li>LinkedIn:<a href="https://www.linkedin.com/in/karthik-e-m-33449a292/"
+                                style="text-decoration: none;color:#3d43b6e2;">linkedin.com/in/karthik</a></li>
+                    </ul>
+                </div>
 
             </div>
             <div class="rightcontainer">
                 <div class="project">
-                <h1 style="color: black; padding-bottom: 10px;">PROJECTS</h1>
-                Created a terminal-based C program called <a href="https://github.com/Karthik-EM/Namefinder/blob/master/namefinder.c" style="text-decoration: none; color:#3d43b6e2; ;">"Word Guesser"</a> that interacts with users to guess a 4-letter word they think of. The program groups letters into categories and uses user input to narrow down the possibilities. It then reconstructs the word using logical filtering and displays it with a simulated typing effect using Sleep() for added engagement. This project demonstrates skills in arrays, conditionals, and user-friendly CLI design.
-                
-            </div>
+                    <h1 style="color: black; padding-bottom: 10px;">PROJECTS</h1>
+                    Created a terminal-based C program called <a
+                        href="https://github.com/Karthik-EM/Namefinder/blob/master/namefinder.c"
+                        style="text-decoration: none; color:#3d43b6e2; ;">"Word Guesser"</a> that interacts with users
+                    to guess a 4-letter word they think of. The program groups letters into categories and uses user
+                    input to narrow down the possibilities. It then reconstructs the word using logical filtering and
+                    displays it with a simulated typing effect using Sleep() for added engagement. This project
+                    demonstrates skills in arrays, conditionals, and user-friendly CLI design.
+
+                </div>
             </div>
         </div>
     </div>
     <div class="footer">JUST DO IT</div>
 </body>
+
 </html>
