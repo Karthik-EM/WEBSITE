@@ -159,9 +159,12 @@
         padding-top: 10px;
         line-height: 1.6;
     }
+.project h1{
+    color: black;
 
+}
     .about-header,
-    .skill-header,.edu-header,.contact-header {
+    .skill-header,.edu-header,.contact-header,.project-header {
         display: flex;
         align-items: center;
         gap: 10px;
@@ -184,23 +187,26 @@
     .edu-header svg path,
     .edu,.contact-header h1,
     .contact-header svg path,
-    .contact {
+    .contact,.project-header h1,
+    .project-header svg path,
+    .project {
         transition: color 0.5s ease, fill 0.3s ease, background-color 0.3s ease;
     }
 
     .about:hover,
-    .skill:hover,.edu:hover,.contact:hover{
+    .skill:hover,.edu:hover,.contact:hover,.project:hover{
         background-color: black;
     }
 
     .about:hover .about-header h1,
     .skill:hover .skill-header h1,.edu:hover .edu-header h1,.contact:hover 
-    .contact-header h1{
+    .contact-header h1,.project:hover 
+    .project-header h1{
         color: yellow;
     }
 
     .about:hover .about-header svg,
-    .skill:hover .skill-header svg,.edu:hover .edu-header svg ,.contact:hover .contact-header svg {
+    .skill:hover .skill-header svg,.edu:hover .edu-header svg ,.contact:hover .contact-header svg,.project:hover .project-header svg {
         fill: yellow;
         transform: translateX(10px);
     }
@@ -225,7 +231,12 @@
         margin-top: -19px;
         transition: transform 0.3s ease;
     }
-
+  .project-header svg {
+        width: 50px;
+        height: 50px;
+        margin-top: -19px;
+        transition: transform 0.3s ease;
+    }
 </style>
 
 <body>
@@ -299,14 +310,15 @@
             </div>
             <div class="rightcontainer">
                 <div class="project">
-                    <h1 style="color: black; padding-bottom: 10px;">PROJECTS</h1>
+                    <div class="project-header">
+                    <h1 style=" padding-bottom: 10px;">PROJECTS</h1>
+                    <svg fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> <path d="M12 1h2v8h8v4h-2v-2h-8V5h-2V3h2V1zM8 7V5h2v2H8zM6 9V7h2v2H6zm-2 2V9h2v2H4zm10 8v2h-2v2h-2v-8H2v-4h2v2h8v6h2zm2-2v2h-2v-2h2zm2-2v2h-2v-2h2zm0 0h2v-2h-2v2z" > </svg>
+                    </div>
                     Created a terminal-based C program called <a
                         href="https://github.com/Karthik-EM/Namefinder/blob/master/namefinder.c"
                         style="text-decoration: none; color:#3d43b6e2; ;">"Word Guesser"</a> that interacts with users
                     to guess a 4-letter word they think of. The program groups letters into categories and uses user
-                    input to narrow down the possibilities. It then reconstructs the word using logical filtering and
-                    displays it with a simulated typing effect using Sleep() for added engagement. This project
-                    demonstrates skills in arrays, conditionals, and user-friendly CLI design.
+                    input to narrow down the possibilities. 
 
                 </div>
             </div>
