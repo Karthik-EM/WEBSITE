@@ -163,12 +163,13 @@
         margin-left: 17px;
         margin-top: 10px;
         margin-bottom: 10px;
+        overflow: visible;
     }
 
     .about-header svg {
         width: 50px;
         height: 50px;
-
+         transition: transform 0.3s ease;
     }
 
     .about-header h1,
@@ -185,9 +186,13 @@
         color: yellow;
     }
 
-    .about:hover .about-header svg path {
+    .about:hover .about-header svg  {
         fill: yellow;
+        transform:translateX(10px);
     }
+.about:hover .about-header svg {
+  transform: translateX(10px);
+}
 </style>
 
 <body>
