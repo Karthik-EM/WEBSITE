@@ -240,6 +240,7 @@
 </style>
 
 <body>
+      
     <div class="header">BIOS SETUP UTILITY</div>
     <div class="menue">
         <div class="advanced">ADVANCED</div>
@@ -325,6 +326,21 @@
         </div>
     </div>
     <div class="footer">JUST DO IT</div>
-</body>
 
+<script>
+  const beat = new Audio('beep.mp3');
+
+  // Select all sections where you want sound on hover
+  const hoverElements = document.querySelectorAll('.about, .skill, .edu, .contact, .project');
+
+  hoverElements.forEach(element => {
+    element.addEventListener('mouseenter', () => {
+      beat.currentTime = 0; // rewind to start
+      beat.play();
+    });
+  });
+</script>
+
+  </script>
+</body>
 </html>
