@@ -41,6 +41,22 @@
         align-items: center;
         gap: 40px;
     }
+.menue button {
+    margin-left: 10px;
+    background: none;
+    border: 2px solid black;
+    color: white;
+    font-size: 12px;
+    font-family: 'Press Start 2P', cursive;
+    cursor: pointer;
+    padding: 4px 8px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.menue button:hover {
+    background-color: var(--bg);
+    color: #252dc4;
+}
 
     .advanced:hover,
     .security:hover,
@@ -58,15 +74,15 @@
     }
 
     .largecontainer {
-        width: 70vw;
-        height: 93vh;
+        width: 70%;
+        height: 100%;
         background-color: var(--bg);
         border: 2px solid black
     }
 
     .rightcolumn {
         width: 100%;
-        height: 85vh;
+        height: 90.5vh;
     }
 
     .rightcontainersmall {
@@ -79,7 +95,7 @@
 
     .rightcontainer {
         width: 100%;
-        height: 85.4%;
+        height: 83%;
         background-color: var(--bg);
         border: 2px solid black;
 
@@ -237,15 +253,20 @@
         margin-top: -19px;
         transition: transform 0.3s ease;
     }
+
+
 </style>
 
 <body>
       
     <div class="header">BIOS SETUP UTILITY</div>
     <div class="menue">
-        <div class="advanced">ADVANCED</div>
-        <div class="security">SECURITY</div>
-        <div class="boot">BOOT</div>
+        <div class="menue">
+    <button class="advanced">ADVANCED</button>
+    <button class="security">SECURITY</button>
+    <button class="boot">BOOT</button>
+</div>
+
     </div>
     <div class="contents">
         <div class="largecontainer">
@@ -315,12 +336,15 @@
                     <h1 style=" padding-bottom: 10px;">PROJECTS</h1>
                     <svg fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> <path d="M12 1h2v8h8v4h-2v-2h-8V5h-2V3h2V1zM8 7V5h2v2H8zM6 9V7h2v2H6zm-2 2V9h2v2H4zm10 8v2h-2v2h-2v-8H2v-4h2v2h8v6h2zm2-2v2h-2v-2h2zm2-2v2h-2v-2h2zm0 0h2v-2h-2v2z" > </svg>
                     </div>
+                    <ul style="padding-left:10px;">
+                    <li>
                     Created a terminal-based C program called <a
                         href="https://github.com/Karthik-EM/Namefinder/blob/master/namefinder.c"
                         style="text-decoration: none; color:#3d43b6e2; ;">"Word Guesser"</a> that interacts with users
                     to guess a 4-letter word they think of. The program groups letters into categories and uses user
-                    input to narrow down the possibilities. 
-
+                    input to narrow down the possibilities.</li>
+                    </ul> 
+</div>
                 </div>
             </div>
         </div>
@@ -331,7 +355,7 @@
   const beat = new Audio('beep.mp3');
 
   // Select all sections where you want sound on hover
-  const hoverElements = document.querySelectorAll('.about, .skill, .edu, .contact, .project');
+  const hoverElements = document.querySelectorAll('.about, .skill, .edu, .contact, .project,.advanced');
 
   hoverElements.forEach(element => {
     element.addEventListener('mouseenter', () => {
