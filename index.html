@@ -13,8 +13,8 @@
         padding: 0;
         font-family: 'Press Start 2P', cursive;
         color: white;
-
-
+         word-break: break-word;
+    overflow-wrap: break-word;
     }
 
     :root {
@@ -40,23 +40,25 @@
         display: flex;
         align-items: center;
         gap: 40px;
-    }
-.menue button {
-    margin-left: 10px;
-    background: none;
-    border: 2px solid black;
-    color: white;
-    font-size: 12px;
-    font-family: 'Press Start 2P', cursive;
-    cursor: pointer;
-    padding: 4px 8px;
-    transition: background-color 0.3s, color 0.3s;
-}
 
-.menue button:hover {
-    background-color: var(--bg);
-    color: #252dc4;
-}
+    }
+
+    .menue button {
+        margin-left: 10px;
+        background: none;
+        border: 2px solid black;
+        color: white;
+        font-size: 12px;
+        font-family: 'Press Start 2P', cursive;
+        cursor: pointer;
+        padding: 4px 8px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .menue button:hover {
+        background-color: var(--bg);
+        color: #252dc4;
+    }
 
     .resume:hover,
     .certificates:hover,
@@ -68,124 +70,58 @@
     }
 
     .contents {
-        display: flex;
         background-color: var(--bg);
         padding: 4px;
+
     }
 
     .largecontainer {
-        width: 70%;
-        height: 100%;
+        width: 100%;
+        height: auto;
         background-color: var(--bg);
         border: 2px solid black
     }
 
-    .rightcolumn {
-        width: 100%;
-        height: 90.5vh;
-    }
-
-    .rightcontainersmall {
-        width: 100%;
-        height: 22vh;
-        background-color: var(--bg);
-        border: 2px solid black;
-
-    }
-
-    .rightcontainer {
-        width: 100%;
-        height: 83%;
-        background-color: var(--bg);
-        border: 2px solid black;
-
-    }
-
-    .footer {
-        background-color: var(--lblue);
-        width: 100%;
-        height: 42px;
-        font-size: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
     .about h1,
     .skill h1,
-    .edu h1 {
+    .edu h1,
+    .contact h1,
+    .project h1 {
         color: black;
         margin-bottom: 10px;
         margin-top: 10px;
-        margin-left: 17px;
-
+    }
+     .about ,
+    .skill ,
+    .edu ,
+    .contact ,
+    .project  {
+        border: 2px solid black;
     }
 
     .about p {
-
-        margin-bottom: 10px;
-        margin-top: 10px;
         margin-left: 10px;
         line-height: 1.6;
     }
 
-    .about {
-        padding: 2px;
-    }
-
-
-    .skill h1 {
-        margin-top: 30px;
-    }
-
-    .edu h1 {
-        margin-top: 30px;
-    }
-
-.edu
-{
-    padding-bottom: 4px;
-}
 
     .skill ul,
-    .edu ul {
-        margin-bottom: 10px;
-        margin-top: 10px;
+    .edu ul,
+    .project ul,.contact ul {
         margin-left: 25px;
         line-height: 1.6;
     }
 
-    .contact {
-        padding-left: 20px;
-        padding-top: 10px;
-        padding-bottom: 1px;
-    }
 
-    .contact h1 {
-        margin-bottom: 20px;
-        color: black;
-    }
-
-    .contact ul li {
-        margin-bottom: 10px;
-    }
-
-    .project {
-        padding-left: 10px;
-        padding-top: 10px;
-        line-height: 1.6;
-    }
-.project h1{
-    color: black;
-
-}
     .about-header,
-    .skill-header,.edu-header,.contact-header,.project-header {
+    .skill-header,
+    .edu-header,
+    .contact-header,
+    .project-header {
         display: flex;
         align-items: center;
         gap: 10px;
         margin-left: 17px;
-        margin-top: 10px;
         margin-bottom: 10px;
     }
 
@@ -195,34 +131,45 @@
         transition: transform 0.3s ease;
     }
 
-   .about-header h1,
+    .about-header h1,
     .about-header svg path,
-    .about,.skill-header h1,
+    .about,
+    .skill-header h1,
     .skill-header svg path,
-    .skill,.edu-header h1,
+    .skill,
+    .edu-header h1,
     .edu-header svg path,
-    .edu,.contact-header h1,
+    .edu,
+    .contact-header h1,
     .contact-header svg path,
-    .contact,.project-header h1,
+    .contact,
+    .project-header h1,
     .project-header svg path,
     .project {
         transition: color 0.5s ease, fill 0.3s ease, background-color 0.3s ease;
     }
 
     .about:hover,
-    .skill:hover,.edu:hover,.contact:hover,.project:hover{
+    .skill:hover,
+    .edu:hover,
+    .contact:hover,
+    .project:hover {
         background-color: black;
     }
 
     .about:hover .about-header h1,
-    .skill:hover .skill-header h1,.edu:hover .edu-header h1,.contact:hover 
-    .contact-header h1,.project:hover 
-    .project-header h1{
+    .skill:hover .skill-header h1,
+    .edu:hover .edu-header h1,
+    .contact:hover .contact-header h1,
+    .project:hover .project-header h1 {
         color: yellow;
     }
 
     .about:hover .about-header svg,
-    .skill:hover .skill-header svg,.edu:hover .edu-header svg ,.contact:hover .contact-header svg,.project:hover .project-header svg {
+    .skill:hover .skill-header svg,
+    .edu:hover .edu-header svg,
+    .contact:hover .contact-header svg,
+    .project:hover .project-header svg {
         fill: yellow;
         transform: translateX(10px);
     }
@@ -234,41 +181,48 @@
         transition: transform 0.3s ease;
     }
 
-   
-      .edu-header svg {
+
+    .edu-header svg {
         width: 50px;
         height: 50px;
         margin-top: 10px;
         transition: transform 0.3s ease;
     }
-      .contact-header svg {
-        width: 50px;
-        height: 50px;
-        margin-top: -19px;
-        transition: transform 0.3s ease;
-    }
-  .project-header svg {
+
+    .contact-header svg {
         width: 50px;
         height: 50px;
         margin-top: -19px;
         transition: transform 0.3s ease;
     }
 
+    .project-header svg {
+        width: 50px;
+        height: 50px;
+        margin-top: -19px;
+        transition: transform 0.3s ease;
+    }
+    .footer {
+        background-color: var(--lblue);
+        width: 100%;
+        height: 42px;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
 </style>
 
 <body>
-      
-    <div class="header">BIOS SETUP UTILITY</div>
-    <div class="menue">
-        <div class="menue">
-    <a href="resume.pdf" download>
-    <button class="resume">Resume</button>
-</a>
-    <button class="certificates">Certificates</button>
-</div>
 
-    </div>
+    <div class="header">BIOS SETUP UTILITY</div>
+        <div class="menue">
+            <a href="resume.pdf" download>
+                <button class="resume">Resume</button>
+            </a>
+            <button class="certificates">Certificates</button>
+        </div>
     <div class="contents">
         <div class="largecontainer">
             <div class="about">
@@ -303,8 +257,10 @@
             </div>
             <DIV class="edu">
                 <div class="edu-header">
-                <h1 class="qualification">QUALIFICATION</h1>
-                <svg fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> <path d="M9 2H5v4h4V2zm7 7V7H2v9h2v6h2v-6h2v6h2V9h6zm-5-7h11v14H11v-2h9V4h-9V2z" > </svg>
+                    <h1 class="qualification">QUALIFICATION</h1>
+                    <svg fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M9 2H5v4h4V2zm7 7V7H2v9h2v6h2v-6h2v6h2V9h6zm-5-7h11v14H11v-2h9V4h-9V2z">
+                    </svg>
 
                 </div>
                 <ul>
@@ -313,59 +269,66 @@
                         College in Kalady, Kerala, 2022 – 2026
                 </ul>
             </DIV>
-        </div>
-        <div class="rightcolumn">
-            <div class="rightcontainersmall">
-                <div class="contact">
-                    <div class="contact-header">
+            <div class="contact">
+                <div class="contact-header">
                     <h1>CONTACT</h1>
-                    <svg fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> <path d="M2 3H0v18h24V3H2zm20 2v14H2V5h20zM10 7H6v4h4V7zm-6 6h8v4H4v-4zm16-6h-6v2h6V7zm-6 4h6v2h-6v-2zm6 4h-6v2h6v-2z" > </svg>
-                    </div>
-                    <ul>
-                        <li>Email:<span style="color:#3d43b6e2;">karthikemmail@gmail.com</span></li>
-                        <li>GitHub:<a href="https://github.com/Karthik-EM"
-                                style="text-decoration: none;color:#3d43b6e2;">https://github.com/Karthik-EM</a></li>
-                        <li>LinkedIn:<a href="https://www.linkedin.com/in/karthik-e-m-33449a292/"
-                                style="text-decoration: none;color:#3d43b6e2;">linkedin.com/in/karthik</a></li>
-                    </ul>
+                    <svg fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M2 3H0v18h24V3H2zm20 2v14H2V5h20zM10 7H6v4h4V7zm-6 6h8v4H4v-4zm16-6h-6v2h6V7zm-6 4h6v2h-6v-2zm6 4h-6v2h6v-2z">
+                    </svg>
                 </div>
+                <ul>
+                    <li>Email:<span style="color:#3d43b6e2;">karthikemmail@gmail.com</span></li>
+                    <li>GitHub:<a href="https://github.com/Karthik-EM"
+                            style="text-decoration: none;color:#3d43b6e2;">https://github.com/Karthik-EM</a>
+                    </li>
+                    <li>LinkedIn:<a href="https://www.linkedin.com/in/karthik-e-m-33449a292/"
+                            style="text-decoration: none;color:#3d43b6e2;">linkedin.com/in/karthik</a></li>
+                </ul>
+            </div>
 
-            </div>
-            <div class="rightcontainer">
-                <div class="project">
-                    <div class="project-header">
+
+
+            <div class="project">
+                <div class="project-header">
                     <h1 style=" padding-bottom: 10px;">PROJECTS</h1>
-                    <svg fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> <path d="M12 1h2v8h8v4h-2v-2h-8V5h-2V3h2V1zM8 7V5h2v2H8zM6 9V7h2v2H6zm-2 2V9h2v2H4zm10 8v2h-2v2h-2v-8H2v-4h2v2h8v6h2zm2-2v2h-2v-2h2zm2-2v2h-2v-2h2zm0 0h2v-2h-2v2z" > </svg>
-                    </div>
-                    <ul style="padding-left:10px;">
-                    <li>
-                    Created a terminal-based C program called <a
-                        href="https://github.com/Karthik-EM/Namefinder/blob/master/namefinder.c"
-                        style="text-decoration: none; color:#3d43b6e2; ;">"Word Guesser"</a> that interacts with users
-                    to guess a 4-letter word they think of. The program groups letters into categories and uses user
-                    input to narrow down the possibilities.</li>
-                    </ul> 
-</div>
+                    <svg fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M12 1h2v8h8v4h-2v-2h-8V5h-2V3h2V1zM8 7V5h2v2H8zM6 9V7h2v2H6zm-2 2V9h2v2H4zm10 8v2h-2v2h-2v-8H2v-4h2v2h8v6h2zm2-2v2h-2v-2h2zm2-2v2h-2v-2h2zm0 0h2v-2h-2v2z">
+                    </svg>
                 </div>
+                <ul style="padding-left:10px;">
+                    <li>
+                        Created a terminal-based C program called <a
+                            href="https://github.com/Karthik-EM/Namefinder/blob/master/namefinder.c"
+                            style="text-decoration: none; color:#3d43b6e2; ;">"Word Guesser"</a> that interacts
+                        with users
+                        to guess a 4-letter word they think of. The program groups letters into categories and
+                        uses user
+                        input to narrow down the possibilities.</li>
+                </ul>
             </div>
+
         </div>
+    </div>
     </div>
     <div class="footer">JUST DO IT</div>
 
-<script>
-  const beat = new Audio('beep.mp3');
+    <script>
+        const beat = new Audio('beep.mp3');
 
-  // Select all sections where you want sound on hover
-  const hoverElements = document.querySelectorAll('.about, .skill, .edu, .contact, .project,.resume,.certificates');
+        // Select all sections where you want sound on hover
+        const hoverElements = document.querySelectorAll('.about, .skill, .edu, .contact, .project,.resume,.certificates');
 
-  hoverElements.forEach(element => {
-    element.addEventListener('mouseenter', () => {
-      beat.currentTime = 0; // rewind to start
-      beat.play();
-    });
-  });
-</script>
+        hoverElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                beat.currentTime = 0; // rewind to start
+                beat.play();
+            });
+        });
+    </script>
 
-  </script>
+    </script>
 </body>
+
 </html>
