@@ -58,8 +58,8 @@
     color: #252dc4;
 }
 
-    .advanced:hover,
-    .security:hover,
+    .resume:hover,
+    .certificates:hover,
     .boot:hover {
         background-color: var(--bg);
         color: rgb(37, 45, 196);
@@ -262,9 +262,10 @@
     <div class="header">BIOS SETUP UTILITY</div>
     <div class="menue">
         <div class="menue">
-    <button class="advanced">ADVANCED</button>
-    <button class="security">SECURITY</button>
-    <button class="boot">BOOT</button>
+    <a href="resume.pdf" download>
+    <button class="resume">Resume</button>
+</a>
+    <button class="certificates">Certificates</button>
 </div>
 
     </div>
@@ -355,7 +356,7 @@
   const beat = new Audio('beep.mp3');
 
   // Select all sections where you want sound on hover
-  const hoverElements = document.querySelectorAll('.about, .skill, .edu, .contact, .project,.advanced');
+  const hoverElements = document.querySelectorAll('.about, .skill, .edu, .contact, .project,.resume,.certificates');
 
   hoverElements.forEach(element => {
     element.addEventListener('mouseenter', () => {
