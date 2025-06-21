@@ -216,7 +216,9 @@
 
 <body>
 
-    <div class="header">BIOS SETUP UTILITY</div>
+    <div class="header" id="typewriter"></div>
+
+
         <div class="menue">
             <a href="resume.pdf" download>
                 <button class="resume">Resume</button>
@@ -314,20 +316,33 @@
     </div>
     <div class="footer">JUST DO IT</div>
 
-    <script>
+ <script>
+        //type writer function
+    const text = "SYSTEM INITIALIZED";
+    let i = 0;
+    const speed = 75;
+
+    function typeWriter() {
+        if (i < text.length) {
+            document.getElementById("typewriter").innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+
+    typeWriter();
+    //sound effects
         const beat = new Audio('beep.mp3');
 
-        // Select all sections where you want sound on hover
+
         const hoverElements = document.querySelectorAll('.about, .skill, .edu, .contact, .project,.resume,.certificates');
 
         hoverElements.forEach(element => {
             element.addEventListener('mouseenter', () => {
-                beat.currentTime = 0; // rewind to start
+                beat.currentTime = 0; 
                 beat.play();
             });
         });
-    </script>
-
     </script>
 </body>
 
