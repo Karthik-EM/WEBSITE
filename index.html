@@ -16,10 +16,12 @@
         word-break: break-word;
         overflow-wrap: break-word;
     }
-body {
-  background: black;
-  color: #00ff00;
-}
+
+    body {
+        background: black;
+        color: #00ff00;
+
+    }
 
     :root {
         --bg: #aaaaaaff;
@@ -65,7 +67,7 @@ body {
     }
 
     .resume:hover,
-    .certificates:hover,
+    .shutdown:hover,
     .boot:hover {
         background-color: var(--bg);
         color: rgb(37, 45, 196);
@@ -221,27 +223,27 @@ body {
 
     #maincontent {
         display: none;
-    
+
     }
-    #post-content
-    {
-       color: #00ff00;
+
+    #post-content {
+        color: #00ff00;
         line-height: 2;
         margin-left: 20px;
         margin-top: 20px;
     }
-    .center-button
-    {
+
+    .center-button {
         height: 100vh;
         width: 100vw;
         width: auto;
         display: flex;
         justify-content: center;
-        align-items: center;  
-        
+        align-items: center;
+
     }
-    #start
-    {
+
+    #start {
         color: #00ff00;
         height: 100px;
         width: 200px;
@@ -257,18 +259,18 @@ body {
     <!-- post scrren -->
     <div id="postScreen">
         <div id="post-content"></div>
-         <div class="center-button">
-        <button id="start">POWER ON</button>
-         </div>
+        <div class="center-button">
+            <button id="start">POWER ON</button>
+        </div>
     </div>
     <!-- main screen -->
-  <div id="maincontent">
+    <div id="maincontent">
         <div class="header" id="typewriter"></div>
         <div class="menue">
             <a href="resume.pdf" download>
                 <button class="resume">Resume</button>
             </a>
-            <button class="certificates">Certificates</button>
+            <button class="shutdown">Shutdown</button>
         </div>
         <div class="contents">
             <div class="largecontainer">
@@ -357,8 +359,8 @@ body {
 
             </div>
         </div>
-    <div class="footer">All bugs are features ;]</div>
-     </div>
+        <div class="footer">All bugs are features ;]</div>
+    </div>
     <script>
         //type writer function
         const text = "SYSTEM INITIALIZED";
@@ -377,51 +379,65 @@ body {
         const beat = new Audio('beep.mp3');
 
 
-        const hoverElements = document.querySelectorAll('.about, .skill, .edu, .contact, .project,.resume,.certificates');
+        const hoverElements = document.querySelectorAll('.about, .skill, .edu, .contact, .project,.resume,.shutdown');
 
         hoverElements.forEach(element => {
             element.addEventListener('mouseenter', () => {
                 beat.currentTime = 0;
                 beat.play();
-                
+
             });
         });
-        
-        //post print
-const postlines = [
-  "Initializing BIOS...",
-  "Checking RAM... OK",
-  "Detecting Devices... OK",
-  "Loading Portfolio Kernel...",
-  "System Ready."
-];
- const pbeat = new Audio('postbeep.mp3');
-let postIndex = 0;
-function showpostlines() {
-    if (postIndex < postlines.length) {
-        if(i==0)
-    {
-        document.getElementById("start").style.display = "none";
-    }
-        pbeat.currentTime = 0;
-          pbeat.play();  
-        document.getElementById("post-content").innerHTML +=postlines[postIndex]+"<br>"
-        postIndex++;
-        setTimeout(showpostlines, 600);
-    }
-    else
-    {
-            //post scrren showing logic
-setTimeout(() => {
-  document.getElementById("postScreen").style.display = "none";
-  document.getElementById("maincontent").style.display = "block";
-  typeWriter();
-}, 1);
-    }
-}
- document.querySelector("#start").onclick =showpostlines;
 
-    
+        //post print
+        const postlines = [
+            "Initializing BIOS...",
+            "Checking RAM... OK",
+            "Detecting Devices... OK",
+            "Loading Portfolio Kernel...",
+            "System Ready."
+        ];
+        const pbeat = new Audio('postbeep.mp3');
+         const startup = new Audio('close.mp3');
+        let postIndex = 0;
+        function showpostlines() {
+            if (postIndex < postlines.length) {
+                if (i == 0) {
+                    document.getElementById("start").style.display = "none";
+                }
+                pbeat.currentTime = 0;
+                pbeat.play();
+                document.getElementById("post-content").innerHTML += postlines[postIndex] + "<br>"
+                postIndex++;
+                setTimeout(showpostlines, 600);
+            }
+            else {
+                //post scrren showing logic
+        
+                setTimeout(() => {
+                    document.getElementById("postScreen").style.display = "none";
+                    document.getElementById("maincontent").style.display = "block";
+                    startup.currentTime = 0;
+                    startup.play();
+                    typeWriter();
+                }, 1);
+            }
+        }
+
+        document.querySelector("#start").onclick = showpostlines;
+        //shut down
+        function shutdown() {
+            document.getElementById("typewriter").innerHTML = "";
+            document.getElementById("maincontent").style.display = "none";
+            document.getElementById("postScreen").style.display = "block";
+            document.getElementById("start").style.display = "block";
+            document.getElementById("post-content").innerHTML = "";
+            postIndex = 0;
+            i = 0;
+        }
+        document.querySelector(".shutdown").onclick = shutdown;
+
+
 
     </script>
 </body>
