@@ -59,6 +59,8 @@
         cursor: pointer;
         padding: 4px 8px;
         transition: background-color 0.3s, color 0.3s;
+        border-radius: 5px;
+        padding: 2px;
     }
 
     .menue button:hover {
@@ -67,14 +69,25 @@
     }
 
     .resume:hover,
-    .shutdown:hover,
-    .boot:hover {
+    .shutdown:hover{
         background-color: var(--bg);
         color: rgb(37, 45, 196);
         padding-top: 4px;
         padding-bottom: 4px;
     }
-
+  /* mystery glow */
+    @keyframes mysteryGlow {
+    0% { box-shadow: 0 0 10px red; color: red; border-color: red; }
+    25% { box-shadow: 0 0 10px orange; color: orange; border-color: orange; }
+    50% { box-shadow: 0 0 10px lime; color: lime; border-color: lime; }
+    75% { box-shadow: 0 0 10px cyan; color: cyan; border-color: cyan; }
+    100% { box-shadow: 0 0 10px magenta; color: magenta; border-color: magenta; }
+}
+.mystery:hover {
+     padding-top: 4px;
+        padding-bottom: 4px;
+    animation: mysteryGlow 1.5s infinite linear;
+}
     .contents {
         background-color: var(--bg);
         padding: 4px;
@@ -254,6 +267,8 @@
         cursor: pointer;
         
     }
+  
+
     @media (max-width: 600px) {
     .footer {
         font-size: 15px; 
@@ -278,6 +293,7 @@
                 <button class="resume">Resume</button>
             </a>
             <button class="shutdown">Shutdown</button>
+            <button class="mystery">Mystery</button>
         </div>
         <div class="contents">
             <div class="largecontainer">
@@ -386,7 +402,7 @@
         const beat = new Audio('beep.mp3');
 
 
-        const hoverElements = document.querySelectorAll('.about, .skill, .edu, .contact, .project,.resume,.shutdown');
+        const hoverElements = document.querySelectorAll('.about, .skill, .edu, .contact, .project,.resume,.shutdown,.mystery');
 
         hoverElements.forEach(element => {
             element.addEventListener('mouseenter', () => {
@@ -406,7 +422,7 @@
         ];
         const pbeat = new Audio('postbeep.mp3');
          const startup = new Audio('startup.mp3');
-        let postIndex = 0;
+        let postIndex = 10; //testing change
         function showpostlines() {
             if (postIndex < postlines.length) {
                 if (i == 0) {
