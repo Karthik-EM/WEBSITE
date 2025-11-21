@@ -20,6 +20,7 @@
     body {
         background: black;
         color: #00ff00;
+        cursor: none;
 
     }
 
@@ -75,6 +76,18 @@
         padding-top: 4px;
         padding-bottom: 4px;
     }
+    #customCursor {
+    position: fixed;
+    pointer-events: none; /* So it's not clickable */
+    width: 60px;  /* Adjust size as needed */
+    height: 60px;
+}
+
+#cursorImage {
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated; 
+}
   /* mystery glow */
     @keyframes mysteryGlow {
     0% { box-shadow: 0 0 10px red; color: red; border-color: red; }
@@ -268,22 +281,33 @@
         
     }
   
-
-    @media (max-width: 600px) {
-    .footer {
-        font-size: 15px; 
-    }
-}
+   #mysteryscreen
+   {
+   
+    display:none;
+   
+   }
+  
 
 </style>
 
 <body>
+    <!-- custom cursor -->
+     <div id="customCursor">
+    <img src="stickmanstop.png" id="cursorImage">
+      </div>
+
     <!-- post scrren -->
     <div id="postScreen">
         <div id="post-content"></div>
         <div class="center-button">
             <button id="start">POWER ON</button>
         </div>
+    </div>
+    <!-- mystrey scrren -->
+    <div id="mysteryscreen">
+
+
     </div>
     <!-- main screen -->
     <div id="maincontent">
@@ -399,7 +423,7 @@
         }
 
         //sound effects
-        const beat = new Audio('beep.mp3');
+        //const beat = new Audio('beep.mp3');//testing
 
 
         const hoverElements = document.querySelectorAll('.about, .skill, .edu, .contact, .project,.resume,.shutdown,.mystery');
@@ -422,7 +446,9 @@
         ];
         const pbeat = new Audio('postbeep.mp3');
          const startup = new Audio('startup.mp3');
-        let postIndex = 0; //testing change
+        let postIndex = 10; //testing
+        document.getElementById("postScreen").style.display = "none";//testing
+        document.getElementById("maincontent").style.display = "block";//testing
         function showpostlines() {
             if (postIndex < postlines.length) {
                 if (i == 0) {
@@ -458,7 +484,36 @@
             postIndex = 0;
             i = 0;
         }
+        //mystery
+        function mystery() {
+            document.getElementById("maincontent").style.display = "none";
+            document.getElementById("mysteryscreen").style.display = "block";
+           
+        }
         document.querySelector(".shutdown").onclick = shutdown;
+        document.querySelector(".mystery").onclick = mystery;
+        //custom mouse pointer follow logic
+        const cursor = document.getElementById("cursorImage");  
+let idleTimer;
+let isMoving = false; // Flag to track state
+
+document.addEventListener("mousemove", function (e) {
+    customCursor.style.left = e.clientX + "px";
+    customCursor.style.top = e.clientY + "px";
+
+     // If cursor was not moving before → switch to running
+    if (!isMoving) {
+        cursor.src = "stickmanrun.gif";
+        isMoving = true;
+    }
+    // Reset idle timer
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(function () {
+        // Switch to still image after 300ms idle
+        cursor.src = "stickmanstop.png";
+        isMoving = false; 
+    }, 100);
+});
 
 
 
