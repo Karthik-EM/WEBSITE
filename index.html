@@ -343,6 +343,8 @@ canvas{
     font-weight: bold;
     font-size: larger;
     transition: transform 0.3s ease, color 0.3s ease;
+    height: 40px;
+    width: 480px;
 }
 .thanks:hover
 {
@@ -350,6 +352,12 @@ canvas{
     transform: scale(1.1);
     
 }
+
+/* hiding controls from vedio */
+video::-webkit-media-controls-panel {
+display: none !important;
+opacity: 1 !important;}
+
 </style>
 
 <body>
@@ -368,8 +376,12 @@ canvas{
     <!-- mystrey scrren -->
     <div id="mysteryscreen">
    <canvas id="snow"></canvas>
+       <video id="secretVideo"  style="display:none;">
+        <source src="hi.mp4" type="video/mp4">
+    </video>
+
 <div class="center">
-    <button class="thanks" onclick="languagechange()">THANKS FOR VISITING</button>
+    <button class="thanks" onclick="textchanging()">THANKS FOR VISITING</button>
     </div>
 </div>
 
@@ -694,7 +706,13 @@ const languageOptions = [
         ];
 let index = -1;
 let j=0;
-        function languagechange() {
+function playvedio() {
+            const video = document.getElementById("secretVideo");
+            video.style.display = "block";   
+            video.play();
+            video.requestFullscreen();
+}
+        function textchanging() {
            
             const button = document.querySelector(".thanks");
             if(j==0 || j==5 || j==10 ||j==14 )
@@ -707,7 +725,7 @@ let j=0;
            }
         if(j==15)
         {
-
+            playvedio()
         }
         j++;
         }
