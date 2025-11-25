@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+Devanagari&family=Noto+Sans+Malayalam&family=Noto+Sans+Sanskrit&display=swap" rel="stylesheet">
 </head>
 <style>
     * {
@@ -287,11 +288,13 @@
    {
    
     display:none;
-   
+   position: relative;
+   width: 100vw; height: 100vh;
    }
+ 
   .dialogbox_resume,.dialogbox_shutdown
   {
-      background-color: #2229af; 
+      background-color: #252dc4; 
       border: 2px solid white;
       width: 320px;
        text-align: center;
@@ -303,22 +306,50 @@
         transform: translate(-50%, -50%);
          display:none;
   }
-  
+
 /* yes buuton and no button styles */
-.buttons
-{
-     margin-top: 16px;
-}
+
    .yes,.no{
       padding: 3px 15px;
       border: 2px solid white;
       cursor: pointer;
        background: none;
+       margin-top: 16px;
     }
     .yes:hover,.no:hover
     {
         background-color: black;
     }
+   /* mystrey screen elements */
+.center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  white-space: nowrap;  
+}
+
+canvas{
+  background:#000;
+  width:100%;
+  height:100%;
+}
+.thanks
+{
+    background-color: #000;
+    border: 2px solid white;
+    padding: 3px;
+    font-weight: bold;
+    font-size: larger;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+.thanks:hover
+{
+    color: #00ff00;
+    transform: scale(1.1);
+    
+}
 </style>
 
 <body>
@@ -336,9 +367,12 @@
     </div>
     <!-- mystrey scrren -->
     <div id="mysteryscreen">
-
-
+   <canvas id="snow"></canvas>
+<div class="center">
+    <button class="thanks" onclick="languagechange()">THANKS FOR VISITING</button>
     </div>
+</div>
+
     <!-- main screen -->
     <div id="maincontent">
         <div class="header" id="typewriter"></div>
@@ -369,7 +403,7 @@
                     </div>
                     <div class="dialogbox_shutdown">
                         <div class="dialogbox_text">
-                           SHUTDOWN
+                           HASTA LA VISTA
                         </div>
                         <div class="buttons">
                              <button class="yes" onclick="shutdown()">YES</button>
@@ -378,7 +412,7 @@
                     </div>
                     <p>HOI!:)I'm Karthik just a random person on Earth who loves tech.</p>
                     <p>Being a CSE student I'm just starting my journey in the world of coding, and I'm really enjoying
-                        learning how to build things.Currently I'm studying web development</p>
+                        learning how to build things.Currently I have dived into the world of  web development</p>
                 </div>
                 <div class="skill">
                     <div class="skill-header">
@@ -409,25 +443,6 @@
                             College in Kalady, Kerala, 2022 – 2026
                     </ul>
                 </DIV>
-                <div class="contact">
-                    <div class="contact-header">
-                        <h1>CONTACT</h1>
-                        <svg fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path
-                                d="M2 3H0v18h24V3H2zm20 2v14H2V5h20zM10 7H6v4h4V7zm-6 6h8v4H4v-4zm16-6h-6v2h6V7zm-6 4h6v2h-6v-2zm6 4h-6v2h6v-2z">
-                        </svg>
-                    </div>
-                    <ul>
-                        <li>Email:<span style="color:#3d43b6e2;">karthikemmail@gmail.com</span></li>
-                        <li>GitHub:<a href="https://github.com/Karthik-EM"
-                                style="text-decoration: none;color:#3d43b6e2;">https://github.com/Karthik-EM</a>
-                        </li>
-                        <li>LinkedIn:<a href="https://www.linkedin.com/in/karthik-e-m-33449a292/"
-                                style="text-decoration: none;color:#3d43b6e2;">linkedin.com/in/karthik</a></li>
-                    </ul>
-                </div>
-
-
 
                 <div class="project">
                     <div class="project-header">
@@ -448,7 +463,23 @@
                             input to narrow down the possibilities.</li>
                     </ul>
                 </div>
-
+                <div class="contact">
+                    <div class="contact-header">
+                        <h1>CONTACT</h1>
+                        <svg fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path
+                                d="M2 3H0v18h24V3H2zm20 2v14H2V5h20zM10 7H6v4h4V7zm-6 6h8v4H4v-4zm16-6h-6v2h6V7zm-6 4h6v2h-6v-2zm6 4h-6v2h6v-2z">
+                        </svg>
+                    </div>
+                    <ul>
+                        <li>Email:<span style="color:#3d43b6e2;">karthikemmail@gmail.com</span></li>
+                        <li>GitHub:<a href="https://github.com/Karthik-EM"
+                                style="text-decoration: none;color:#3d43b6e2;">https://github.com/Karthik-EM</a>
+                        </li>
+                        <li>LinkedIn:<a href="https://www.linkedin.com/in/karthik-e-m-33449a292/"
+                                style="text-decoration: none;color:#3d43b6e2;">linkedin.com/in/karthik</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="footer">All bugs are features ;]</div>
@@ -533,6 +564,7 @@
         function mystery() {
             document.getElementById("maincontent").style.display = "none";
             document.getElementById("mysteryscreen").style.display = "block";
+            document.querySelector(".mystery_input").style.display = "block";
            
         }
         document.querySelector(".mystery").onclick = mystery;
@@ -581,9 +613,104 @@ document.addEventListener("mousemove", function (e) {
             document.querySelector(".dialogbox_shutdown").style.display = "none";
             }
         }
+// cursor logic
+document.getElementById("mysteryscreen").addEventListener("mousemove", function(e) {
+    const light = document.getElementById("light");
+    light.style.left = e.clientX + "px";
+    light.style.top = e.clientY + "px";
+});
+var Snow = {
+  el: "#snow", 
+  density: 10000, // higher = fewer bits
+  maxHSpeed: 5, // How much do you want them to move horizontally
+  minFallSpeed: 2,
+  canvas: null,
+  ctx: null, 
+  particles: [],
+  colors: [],
+  mp: 1,
+  quit: false,
+  init(){
+    this.canvas = document.querySelector(this.el);
+    this.ctx = this.canvas.getContext("2d");
+    this.reset();
+    requestAnimationFrame(this.render.bind(this));
+    window.addEventListener("resize", this.reset.bind(this));
+  },
+  reset(){
+    this.w = window.innerWidth;
+    this.h = window.innerHeight;
+    this.canvas.width = this.w;
+    this.canvas.height = this.h;
+    this.particles = [];
+    this.mp = Math.ceil(this.w * this.h / this.density);
+    for(var i = 0; i < this.mp; i++)
+    {
+      var size = Math.random()*4+5;
+      this.particles.push({
+        x: Math.random()*this.w, //x-coordinate
+        y: Math.random()*this.h, //y-coordinate
+        w: size,
+        h: size,
+        vy: this.minFallSpeed + Math.random(), //density
+        vx:(Math.random()*this.maxHSpeed) - this.maxHSpeed/2,
+        fill: "#ffffff",
+        s: (Math.random() * 0.2) - 0.1
+      });
+    }
+  },
+  
+  render(){
+    this.ctx.clearRect(0, 0, this.w, this.h);
+    this.particles.forEach((p,i) => {
+      p.y += p.vy;
+      p.x += p.vx;
+      this.ctx.fillStyle = p.fill;
+      this.ctx.fillRect(p.x, p.y, p.w, p.h);
+      if(p.x > this.w+5 || p.x < -5 || p.y > this.h){
+        p.x = Math.random()*this.w;
+        p.y = -10;
+      }
+    });
+    if(this.quit){
+      return;
+    }
+    requestAnimationFrame(this.render.bind(this));
+  },
+  destroy(){
+    this.quit = true;
+  }
+  
+};
 
+var confetti = Snow.init();
+// thanks language change
+const languageOptions = [
+            "NANNIYUNDAAA VANNATHIL",
+            "CLICK SOME MORE..",
+            "ENTHA MADUTHO:)",
+            "ORU CLICKUM KUDIYUM",
+            "PATICHA:}"
+        ];
+let index = -1;
+let j=0;
+        function languagechange() {
+           
+            const button = document.querySelector(".thanks");
+            if(j==0 || j==5 || j==10 ||j==14 )
+        {
+             index = (index + 1) % languageOptions.length;
+            button.innerText = languageOptions[index];
+        }
+           else{
+             button.innerText = j;
+           }
+        if(j==15)
+        {
 
-
+        }
+        j++;
+        }
     </script>
 </body>
 
