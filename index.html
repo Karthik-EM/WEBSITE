@@ -239,7 +239,20 @@
         margin-top: -3px;
         transition: transform 0.3s ease;
     }
+    /* contach list */
+.contact ul {
+    display: flex;
+     gap: 54px;
+    list-style: none;
+   
+}
+.icon {
+    transition: transform 0.3s ease;
+}
 
+.icon:hover {
+    transform: scale(1.3);
+}
     .footer {
         background-color: var(--lblue);
         width: 100%;
@@ -281,6 +294,7 @@
         font-size: larger;
         border-width: 3px;
         cursor: pointer;
+        display: none;
         
     }
 
@@ -337,14 +351,15 @@ canvas{
 }
 .thanks
 {
-    background-color: #000;
-    border: 2px solid white;
+    background-color: rgba(255, 255, 255, 0); 
+    border: 1px solid #00ff00;
     padding: 3px;
     font-weight: bold;
     font-size: larger;
     transition: transform 0.3s ease, color 0.3s ease;
-    height: 40px;
+    height: 100px;
     width: 480px;
+    
 }
 .thanks:hover
 {
@@ -371,6 +386,7 @@ opacity: 1 !important;}
         <div id="post-content"></div>
         <div class="center-button">
             <button id="start">POWER ON</button>
+            <div class="desktop" style="color: #00ff00;">BEST VIEWD ON DESKTOP</div>
         </div>
     </div>
     <!-- mystrey scrren -->
@@ -406,7 +422,7 @@ opacity: 1 !important;}
                     </div>
                     <div class="dialogbox_resume">
                         <div class="dialogbox_text">
-                            Download Resume
+                            STEAL MY DATA
                         </div>
                         <div class="buttons">
                              <button class="yes" onclick="window.location.href='resume.pdf'">YES</button>
@@ -422,9 +438,9 @@ opacity: 1 !important;}
   <button class="no" onclick="dialog_display_off('s')">NO</button>
                         </div>
                     </div>
-                    <p>HOI!:)I'm Karthik just a random person on Earth who loves tech.</p>
-                    <p>Being a CSE student I'm just starting my journey in the world of coding, and I'm really enjoying
-                        learning how to build things.Currently I have dived into the world of  web development</p>
+                    <p>Hoi! I’m Karthik — a human in beta version, currently orbiting Earth while juggling 47 tabs and mild existential confusion.</p><br>
+                    <p>As a CSE student, I’ve heroically stormed into the dark arts of coding armed with nothing but vibes and a dream.</p><br><p>My proudest achievement so far: fixing a bug after three hours, only to realize it needed a semicolon.</p><br>
+                    <p>Right now I’m “learning” web development, which mostly consists of googling “why is my div in Narnia,” crying over CSS that refuses to center anything, and sacrificing semicolons to the coding gods because I still forget those tiny traitors every single time.</p>
                 </div>
                 <div class="skill">
                     <div class="skill-header">
@@ -466,13 +482,18 @@ opacity: 1 !important;}
                     </div>
                     <ul style="padding-left:10px;">
                         <li>
-                            Created a terminal-based C program called <a
+                            Created a terminal-based C program  <a
                                 href="https://github.com/Karthik-EM/Namefinder/blob/master/namefinder.c"
-                                style="text-decoration: none; color:#3d43b6e2; ;">"Word Guesser"</a> that interacts
+                                style="text-decoration: none; color:#3d43b6e2; ;">"WORD GUESSER"</a> that interacts
                             with users
                             to guess a 4-letter word they think of. The program groups letters into categories and
                             uses user
-                            input to narrow down the possibilities.</li>
+                            input to narrow down the possibilities.</li><br>
+                        <li>Built an assistive tool <a
+                                href="https://github.com/TEAM-5-PROJECTS/Vision-assistant"
+                                style="text-decoration: none; color:#3d43b6e2; ;">"NETHRA"</a> for the visually impaired by combin
+ing object detection (DETR), monocular depth estimation (UniDepthV2), and a vision-language model (Qwen-VL) to
+ generate spatially-aware scene descriptions. Developed an accessible web app with TTS and chat support.</li>
                     </ul>
                 </div>
                 <div class="contact">
@@ -484,12 +505,21 @@ opacity: 1 !important;}
                         </svg>
                     </div>
                     <ul>
-                        <li>Email:<span style="color:#3d43b6e2;">karthikemmail@gmail.com</span></li>
-                        <li>GitHub:<a href="https://github.com/Karthik-EM"
-                                style="text-decoration: none;color:#3d43b6e2;">https://github.com/Karthik-EM</a>
-                        </li>
-                        <li>LinkedIn:<a href="https://www.linkedin.com/in/karthik-e-m-33449a292/"
-                                style="text-decoration: none;color:#3d43b6e2;">linkedin.com/in/karthik</a></li>
+                        <li>
+        <a href="mailto:karthikemmail@gmail.com">
+            <img src="email.png" alt="Email" class="icon">
+        </a>
+    </li>
+    <li>
+        <a href="https://github.com/Karthik-EM" target="_blank">
+            <img src="github.png" alt="GitHub" class="icon">
+        </a>
+    </li>
+    <li>
+        <a href="https://www.linkedin.com/in/karthik-e-m-33449a292/" target="_blank">
+           <img src="linkedin.png" alt="LinkedIn" class="icon" style="margin-top: 9px;height:45px">
+        </a>
+    </li>
                     </ul>
                 </div>
             </div>
@@ -497,6 +527,14 @@ opacity: 1 !important;}
         <div class="footer">All bugs are features ;]</div>
     </div>
     <script>
+        //showing shutdown
+        function shutdown_show() {
+    setTimeout(() => {
+        document.querySelector('.desktop').style.display = 'none';
+        document.querySelector('#start').style.display = 'block';
+    }, 1500); 
+}
+window.onload = shutdown_show;
         //type writer function
         const text = "SYSTEM INITIALIZED";
         let i = 0;
@@ -511,10 +549,10 @@ opacity: 1 !important;}
         }
 
         //sound effects
-       // const beat = new Audio('beep.mp3');//testing
+       const beat = new Audio('beep.mp3');
 
 
-        const hoverElements = document.querySelectorAll('.about, .skill, .edu, .contact, .project,.resume,.shutdown,.mystery,.yes,.no');
+        const hoverElements = document.querySelectorAll('.about, .skill, .edu, .contact, .project,.resume,.shutdown,.mystery,.yes,.no,.thanks');
 
         hoverElements.forEach(element => {
             element.addEventListener('mouseenter', () => {
@@ -534,9 +572,7 @@ opacity: 1 !important;}
         ];
         const pbeat = new Audio('postbeep.mp3');
          const startup = new Audio('startup.mp3');
-        let postIndex = 10; //testing
-        document.getElementById("postScreen").style.display = "none";//testing
-        document.getElementById("maincontent").style.display = "block";//testing
+        let postIndex = 0; 
         function showpostlines() {
             if (postIndex < postlines.length) {
                 if (i == 0) {
@@ -550,7 +586,6 @@ opacity: 1 !important;}
             }
             else {
                 //post scrren showing logic
-        
                 setTimeout(() => {
                     document.getElementById("postScreen").style.display = "none";
                     document.getElementById("maincontent").style.display = "block";
@@ -576,8 +611,7 @@ opacity: 1 !important;}
         function mystery() {
             document.getElementById("maincontent").style.display = "none";
             document.getElementById("mysteryscreen").style.display = "block";
-            document.querySelector(".mystery_input").style.display = "block";
-           
+        
         }
         document.querySelector(".mystery").onclick = mystery;
         //custom mouse pointer follow logic
@@ -706,6 +740,7 @@ const languageOptions = [
         ];
 let index = -1;
 let j=0;
+
 function playvedio() {
             const video = document.getElementById("secretVideo");
             video.style.display = "block";   
@@ -715,17 +750,24 @@ function playvedio() {
         function textchanging() {
            
             const button = document.querySelector(".thanks");
-            if(j==0 || j==5 || j==10 ||j==14 )
+            if(j==0 || j==5 || j==8 ||j==10 ||j==11 )
         {
              index = (index + 1) % languageOptions.length;
             button.innerText = languageOptions[index];
         }
            else{
-             button.innerText = j;
+         
+            button.innerText = "KEEP GOING "+j;
+
            }
-        if(j==15)
+        if(j==12)
         {
             playvedio()
+        }
+        else if(j==13)
+        {
+            document.getElementById("mysteryscreen").style.display = "none";
+            document.getElementById("maincontent").style.display = "block";
         }
         j++;
         }
