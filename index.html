@@ -758,7 +758,15 @@ function playvedio() {
             const video = document.getElementById("secretVideo");
             video.style.display = "block";   
             video.play();
+            // close vedio
+            video.addEventListener("ended", function () {
+            document.exitFullscreen(); 
+            document.getElementById("mysteryscreen").style.display = "none";
+            document.getElementById("maincontent").style.display = "block";
+            
+});
             video.requestFullscreen();
+
 }
         function textchanging() {
            
