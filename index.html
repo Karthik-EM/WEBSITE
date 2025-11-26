@@ -769,6 +769,7 @@ function playvedio() {
             document.exitFullscreen(); 
             document.getElementById("mysteryscreen").style.display = "none";
             document.getElementById("maincontent").style.display = "block";
+            j=0;
             
 });
             video.requestFullscreen();
@@ -790,11 +791,6 @@ function playvedio() {
         if(j==12)
         {
             playvedio()
-        }
-        else if(j==13)
-        {
-            document.getElementById("mysteryscreen").style.display = "none";
-            document.getElementById("maincontent").style.display = "block";
         }
         j++;
         }
