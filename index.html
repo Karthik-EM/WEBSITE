@@ -436,7 +436,7 @@ opacity: 1 !important;}
                             STEAL MY DATA
                         </div>
                         <div class="buttons">
-                             <button class="yes" onclick="window.location.href='resume.pdf'">YES</button>
+                             <button class="yes" onclick="open_resume()">YES</button>
   <button class="no" onclick="dialog_display_off('r')">NO</button>
                         </div>
                     </div>
@@ -649,6 +649,12 @@ document.addEventListener("mousemove", function (e) {
         isMoving = false; 
     }, 100);
 });
+   //resume
+        function open_resume()
+        {
+            document.querySelector(".dialogbox_resume").style.display = "none";
+             window.location.href = 'resume.pdf';
+        }
 // dialog box display
  function dialog_display_on(msg) {
     if(msg=='r')
