@@ -502,8 +502,7 @@ opacity: 1 !important;}
                             input to narrow down the possibilities.</li><br>
                         <li>Built an assistive tool <a
                                 href="https://github.com/TEAM-5-PROJECTS/Vision-assistant"
-                                style="text-decoration: none; color:#3d43b6e2; ;">"NETHRA"</a> for the visually impaired by combin
-ing object detection (DETR), monocular depth estimation (UniDepthV2), and a vision-language model (Qwen-VL) to
+                                style="text-decoration: none; color:#3d43b6e2; ;">"NETHRA"</a> for the visually impaired by combining object detection (DETR), monocular depth estimation (UniDepthV2), and a vision-language model (Qwen-VL) to
  generate spatially-aware scene descriptions. Developed an accessible web app with TTS and chat support.</li>
                     </ul>
                 </div>
@@ -779,6 +778,9 @@ function playvedio() {
         function textchanging() {
            
             const button = document.querySelector(".thanks");
+            beat.currentTime = 0;
+                beat.play();
+
             if(j==0 || j==5 || j==8 ||j==10 ||j==11 )
         {
              index = (index + 1) % languageOptions.length;
