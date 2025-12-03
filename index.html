@@ -543,8 +543,8 @@ padding: 3px;
     </div>
     <script>
         //testing logics
-         document.getElementById("postScreen").style.display = "none";
-        document.getElementById("maincontent").style.display = "block";
+        //document.getElementById("postScreen").style.display = "none";
+        //document.getElementById("maincontent").style.display = "block";
         
         //showing shutdown
         function shutdown_show() {
@@ -591,7 +591,7 @@ window.onload = shutdown_show;
         ];
         const pbeat = new Audio('postbeep.mp3');
          const startup = new Audio('startup.mp3');
-        let postIndex = 10; //testing
+        let postIndex = 0; 
         function showpostlines() {
             if (postIndex < postlines.length) {
                 if (i == 0) {
@@ -725,8 +725,8 @@ document.getElementById("mysteryscreen").addEventListener("mousemove", function(
 });
 var Snow = {
   el: "#snow", 
-  density: 10000, // higher = fewer bits
-  maxHSpeed: 5, // How much do you want them to move horizontally
+  density: 10000, 
+  maxHSpeed: 5, 
   minFallSpeed: 2,
   canvas: null,
   ctx: null, 
