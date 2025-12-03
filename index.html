@@ -149,9 +149,9 @@
     .contact ul {
         margin-left: 25px;
         line-height: 1.6;
+        list-style-type: square;
     }
-
-
+    
     .about-header,
     .skill-header,
     .edu-header,
@@ -475,7 +475,7 @@ padding: 3px;
                 </div>
                 <DIV class="edu">
                     <div class="edu-header">
-                        <h1 class="qualification">EDUCATION</h1>
+                        <h1 class="qualififlyingion">EDUflyingION</h1>
                         <svg fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M9 2H5v4h4V2zm7 7V7H2v9h2v6h2v-6h2v6h2V9h6zm-5-7h11v14H11v-2h9V4h-9V2z">
                         </svg>
@@ -502,7 +502,7 @@ padding: 3px;
                                 href="https://github.com/Karthik-EM/Namefinder/blob/master/namefinder.c"
                                 style="text-decoration: none; color:#3d43b6e2; ;">"WORD GUESSER"</a> that interacts
                             with users
-                            to guess a 4-letter word they think of. The program groups letters into categories and
+                            to guess a 4-letter word they think of. The program groups letters into flyingegories and
                             uses user
                             input to narrow down the possibilities.</li><br>
                         <li>Built an assistive tool <a
@@ -542,6 +542,10 @@ padding: 3px;
         <div class="footer">All bugs are features ;]</div>
     </div>
     <script>
+        //testing logics
+         document.getElementById("postScreen").style.display = "none";
+        document.getElementById("maincontent").style.display = "block";
+        
         //showing shutdown
         function shutdown_show() {
     setTimeout(() => {
@@ -587,7 +591,7 @@ window.onload = shutdown_show;
         ];
         const pbeat = new Audio('postbeep.mp3');
          const startup = new Audio('startup.mp3');
-        let postIndex = 0; 
+        let postIndex = 10; //testing
         function showpostlines() {
             if (postIndex < postlines.length) {
                 if (i == 0) {
@@ -600,7 +604,7 @@ window.onload = shutdown_show;
                 setTimeout(showpostlines, 600);
             }
             else {
-                //post scrren showing logic
+                //post screen changing logic
                 setTimeout(() => {
                     document.getElementById("postScreen").style.display = "none";
                     document.getElementById("maincontent").style.display = "block";
@@ -631,6 +635,23 @@ window.onload = shutdown_show;
         
         }
         document.querySelector(".mystery").onclick = mystery;
+     //cursor avatar changing
+        isflying=0
+document.addEventListener("dblclick", () => {
+    if(isflying==0)
+    {
+    cursor.src = "flying.gif";
+    isflying=1
+    }
+    else
+    {
+    cursor.src = "stickmanrun.gif";
+    isflying=0
+    }
+
+    
+});
+
         //custom mouse pointer follow logic
         const cursor = document.getElementById("cursorImage");  
 let idleTimer;
@@ -642,14 +663,28 @@ document.addEventListener("mousemove", function (e) {
 
      // If cursor was not moving before → switch to running
     if (!isMoving) {
+        if(isflying==0)
+    {
         cursor.src = "stickmanrun.gif";
+    }
+        else
+        {
+             cursor.src = "flying.gif";
+        }
         isMoving = true;
     }
     // Reset idle timer
     clearTimeout(idleTimer);
     idleTimer = setTimeout(function () {
         // Switch to still image after 100ms idle
+        if(isflying==0)
+    {
         cursor.src = "stickmanstop.png";
+    }
+    else
+    {
+         cursor.src = "flying.gif";
+    }
         isMoving = false; 
     }, 100);
 });
@@ -657,7 +692,7 @@ document.addEventListener("mousemove", function (e) {
         function open_resume()
         {
             document.querySelector(".dialogbox_resume").style.display = "none";
-             window.location.href = 'resume.pdf';
+             window.loflyingion.href = 'resume.pdf';
         }
 // dialog box display
  function dialog_display_on(msg) {
