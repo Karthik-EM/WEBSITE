@@ -407,10 +407,22 @@ opacity: 1 !important;}
         width: 70vw;
         font-size: 3vw;
 }
-.menue button
-{
-padding: 3px;
+  .menue button {
+    font-size: 10px;
+    padding: 3px 5px;
+  }
+    .about h1,
+    .skill h1,
+    .edu h1,
+    .contact h1,
+    .project h1 {
+      font-size: x-large;
+    }
+   #final_bye {
+  font-size: 0.85rem;
 }
+
+  
 }
 </style>
 
@@ -568,8 +580,8 @@ padding: 3px;
     </div>
     <script>
         //testing logics
-        //document.getElementById("postScreen").style.display = "none";
-       // document.getElementById("maincontent").style.display = "block";
+        document.getElementById("postScreen").style.display = "none";
+        document.getElementById("maincontent").style.display = "block";
         //testing
 
         //showing shutdown
@@ -882,84 +894,97 @@ code_status=false;
         }
 //typing beep
  const type_beep = new Audio('type_beep.mp3')
+ //text display sequence
+ function startFinalSequence() {
+  console.log("dha pedicho oru easter egg :https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+  document.querySelector(".thanks").style.display = "none";
+  document.querySelector("#snow").style.display = "none";
+
+  const text =
+    "Hey there..\n\n" +
+    "Thanks a ton for hanging out on my site!\n" +
+    "Before you go...\n\n" +
+    "What should I call you?";
+
+  const el = document.querySelector("#final_bye");
+  const inputBox = document.querySelector("#inputbox");
+
+  let index = 0;
+  const baseSpeed = 32;
+
+  function playTypeSound() {
+    const click = type_beep.cloneNode();
+    click.playbackRate = 1.4;
+    click.play();
+  }
+
+  function typeText() {
+    if (index >= text.length) {
+      inputBox.style.display = "block";
+      return;
+    }
+
+    const char = text[index];
+    el.textContent += char;
+
+    if (char !== " " && char !== "\n") playTypeSound();
+
+    index++;
+    let delay = baseSpeed + Math.random() * 20;
+    if (char === "." || char === "\n") delay = 250;
+
+    setTimeout(typeText, delay);
+  }
+
+  typeText();
+}
+
 //arrow code
-const code = [
-  "ArrowUp", 
-  "ArrowDown", 
-  "ArrowLeft",
-  "ArrowRight"
-];
+const code = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
 let keys = [];
-
-document.addEventListener("keydown", (e) => {
-  let key = e.key;
-
+//key comparison logic
+function handleKey(key) {
   keys.push(key);
 
-  // keep only last 4 keys
+  // keep only last 4 inputs
   if (keys.length > 4) {
     keys.shift();
   }
 
-  // checking code
-  if(code_status){
-  if(code.toString()==keys.toString())
-  {
-   code_status=false;//to prevent multiple displaying
-   console.log("HI");
-    document.querySelector(".thanks").style.display="none";
-    document.querySelector("#snow").style.display="none";
-const text =
-  "Hey there..\n\n" +
-  "Thanks a ton for hanging out on my site!\n" +
-  "Before you go...\n\n" +
-  "What should I call you?";
-
-
-const el = document.querySelector("#final_bye");
-const inputBox = document.querySelector("#inputbox");
-
-let index = 0;
-const baseSpeed = 32;
-
-function playTypeSound() {
-  const click = type_beep.cloneNode();
-  click.playbackRate = 1.4;
-  click.play();
-}
-
-function typeText() {
-  if (index >= text.length) {
-    inputBox.style.display = "block";
-    return;
+  if (keys.toString() === code.toString()) {
+    code_status = false;
+    startFinalSequence();
   }
-
-  const char = text[index];
-  el.textContent += char;
-
-  if (char !== " " && char !== "\n") {
-    playTypeSound(); 
-  }
-
-  index++;
-
-  let delay = baseSpeed + Math.random() * 20;
-  if (char === "." || char === "\n") 
-  {
-    delay = 250;
-  }
-
-  setTimeout(typeText, delay);
 }
+//desktop arrow events
+document.addEventListener("keydown", (e) => {
+  handleKey(e.key);
+});
+//mobile gesture
+let startX = 0;
+let startY = 0;
 
+document.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+  startY = e.touches[0].clientY;
+});
 
-// start typing
-typeText();
+document.addEventListener("touchend", (e) => {
+  let endX = e.changedTouches[0].clientX;
+  let endY = e.changedTouches[0].clientY;
 
-}
+  let dx = endX - startX;
+  let dy = endY - startY;
 
+  if (Math.abs(dx) > Math.abs(dy)) {
+    if (dx > 40) handleKey("ArrowRight");
+    else if (dx < -40) handleKey("ArrowLeft");
+  } else {
+    if (dy > 40) handleKey("ArrowDown");
+    else if (dy < -40) handleKey("ArrowUp");
   }
 });
+
 //name storing
 const input = document.getElementById("inputbox");
 
