@@ -374,6 +374,29 @@ canvas{
 video::-webkit-media-controls-panel {
 display: none !important;
 opacity: 1 !important;}
+#final_bye {
+  color: #00ff00;
+ font-size: larger;
+  line-height: 1.8;
+  white-space: pre-wrap; 
+}
+/* name input sttyles */
+#inputbox {
+  margin-top: 10px;
+  background: black;
+  color: #00ff00;
+  border: 1px solid #00ff00;
+  padding: 6px;
+  display: none;
+  cursor: text;
+}
+#inputbox:focus {
+  background: black;
+  color: #00ff00;
+  border: 1px solid #00ff00;
+  outline: none;
+}
+
 /* mobile view */
 @media (max-width: 480px) {
   .footer {
@@ -413,6 +436,8 @@ padding: 3px;
     </video>
 
 <div class="center">
+    <div id="final_bye"></div>
+    <input type="text"  id="inputbox">
     <button class="thanks" onclick="textchanging()">THANKS FOR VISITING</button>
     </div>
 </div>
@@ -543,8 +568,8 @@ padding: 3px;
     </div>
     <script>
         //testing logics
-        document.getElementById("postScreen").style.display = "none";
-        document.getElementById("maincontent").style.display = "block";
+        //document.getElementById("postScreen").style.display = "none";
+       // document.getElementById("maincontent").style.display = "block";
         //testing
 
         //showing shutdown
@@ -583,12 +608,16 @@ window.onload = shutdown_show;
         });
 
         //post print
-        const postlines = [
+const username = localStorage.getItem("username") || "user";
+
+const postlines = [
+  `Welcome, ${username}`,
   `CPU Cores Detected: ${navigator.hardwareConcurrency}`,
   `Device Memory: ${navigator.deviceMemory || "Unknown"} GB`,
   `Platform: ${navigator.platform}`,
   "Loading Portfolio Kernel..."
 ];
+
 
         const pbeat = new Audio('postbeep.mp3');
          const startup = new Audio('startup.mp3');
@@ -719,12 +748,7 @@ document.addEventListener("mousemove", function (e) {
             document.querySelector(".dialogbox_shutdown").style.display = "none";
             }
         }
-// cursor logic
-document.getElementById("mysteryscreen").addEventListener("mousemove", function(e) {
-    const light = document.getElementById("light");
-    light.style.left = e.clientX + "px";
-    light.style.top = e.clientY + "px";
-});
+
 //snow logic
 var Snow = {
   el: "#snow", 
@@ -797,7 +821,7 @@ const thanks_msg = [
             "CLICK SOME MORE..",
             "ENTHA MADUTHO:)",
             "ORU CLICKUM KUDIYUM",
-            "PATICHA:}"
+            "PATICHA:)"
         ];
 let index = -1;
 let j=0;
@@ -811,13 +835,14 @@ function playvedio() {
             document.exitFullscreen(); 
             document.getElementById("mysteryscreen").style.display = "none";
             document.getElementById("maincontent").style.display = "block";
-              video.style.display = "none";   
-            j=0;
+            video.style.display = "none";   
             
 });
             video.requestFullscreen();
 
 }
+//status for  code
+code_status=false;
      //thanks text changing
      vedio_state=true;
      function textchanging() {
@@ -836,24 +861,27 @@ function playvedio() {
             button.innerText = "KEEP GOING "+j;
 
            }
-        if(j==2)
+        if(j==9 )
         {
             if(vedio_state)
             {
 
                 playvedio();
                 vedio_state=false;
+                j=8;
             }
             else
             {
                   button.innerText = "up,down,left,right";
+                  code_status=true;
                   j=0;
                   
             }
        }
         j++;
         }
-
+//typing beep
+ const type_beep = new Audio('type_beep.mp3')
 //arrow code
 const code = [
   "ArrowUp", 
@@ -862,6 +890,7 @@ const code = [
   "ArrowRight"
 ];
 let keys = [];
+
 document.addEventListener("keydown", (e) => {
   let key = e.key;
 
@@ -869,18 +898,82 @@ document.addEventListener("keydown", (e) => {
 
   // keep only last 4 keys
   if (keys.length > 4) {
-    keys=[];
-    console.log("clear");
+    keys.shift();
   }
 
   // checking code
+  if(code_status){
   if(code.toString()==keys.toString())
   {
+   code_status=false;//to prevent multiple displaying
    console.log("HI");
+    document.querySelector(".thanks").style.display="none";
+    document.querySelector("#snow").style.display="none";
+const text =
+  "Hey there..\n\n" +
+  "Thanks a ton for hanging out on my site!\n" +
+  "Before you go...\n\n" +
+  "What should I call you?";
 
-    keys=[];
+
+const el = document.querySelector("#final_bye");
+const inputBox = document.querySelector("#inputbox");
+
+let index = 0;
+const baseSpeed = 32;
+
+function playTypeSound() {
+  const click = type_beep.cloneNode();
+  click.playbackRate = 1.4;
+  click.play();
+}
+
+function typeText() {
+  if (index >= text.length) {
+    inputBox.style.display = "block";
+    return;
+  }
+
+  const char = text[index];
+  el.textContent += char;
+
+  if (char !== " " && char !== "\n") {
+    playTypeSound(); 
+  }
+
+  index++;
+
+  let delay = baseSpeed + Math.random() * 20;
+  if (char === "." || char === "\n") 
+  {
+    delay = 250;
+  }
+
+  setTimeout(typeText, delay);
+}
+
+
+// start typing
+typeText();
+
+}
+
   }
 });
+//name storing
+const input = document.getElementById("inputbox");
+
+input.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    localStorage.setItem("username",input.value);
+    document.getElementById("mysteryscreen").style.display = "none";
+    document.getElementById("maincontent").style.display = "block";
+    document.querySelector("#final_bye").style.display="none";
+    document.querySelector("#inputbox").style.display="none";
+    document.querySelector("#snow").style.display="block";
+  }
+});
+
 
     </script>
 </body>
