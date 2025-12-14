@@ -930,7 +930,11 @@ code_status=false;
     const char = text[index];
     el.textContent += char;
 
-    if (char !== " " && char !== "\n") playTypeSound();
+    if (char !== " " && char !== "\n")
+    { 
+    playTypeSound();
+    navigator.vibrate(100);
+    }
 
     index++;
     let delay = baseSpeed + Math.random() * 20;
@@ -947,6 +951,7 @@ const code = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
 let keys = [];
 //key comparison logic
 function handleKey(key) {
+ navigator.vibrate(100);
   keys.push(key);
 
   // keep only last 4 inputs
