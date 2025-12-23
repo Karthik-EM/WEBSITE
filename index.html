@@ -45,25 +45,25 @@
 
     .menue {
         width: 100%;
-        height: 26px;
+        height: auto;             
         background-color: #252dc4;
         display: flex;
         align-items: center;
-        gap: 40px;
+        gap: 12px;
 
     }
 
     .menue button{
         margin-left: 10px;
         background: none;
-        border: 2px solid black;
+        border: none;
         color: white;
         font-size: 12px;
         font-family: 'Press Start 2P', cursive;
         cursor: none;
         padding: 4px 8px;
         transition: background-color 0.3s, color 0.3s;
-        padding: 5px;
+     
     }
 
     .menue button:hover {
@@ -250,6 +250,7 @@
     list-style: none;
     display: flex;
    justify-content: center;
+   margin-top: 10px;
    
 }
 .contact-header 
@@ -262,12 +263,15 @@
 .contact-header h1
 {
  font-size:30px;
+  margin: 0;
+  color: white;
 }
 .close {
   display: flex;
   justify-content: center;
   padding-left: 20px;
-   margin-top: 3px;
+   margin-top: 4px;
+  
 }
 
 .icon {
@@ -353,7 +357,7 @@
    .yes,.no,.close_button{
       padding: 3px 15px;
       border: 2px solid white;
-      cursor: pointer;
+      cursor: none;
        background: none;
        margin-top: 16px;
     transition: background-color 0.3s ease;
@@ -505,13 +509,14 @@ opacity: 1 !important;}
                         </svg>
 
                     </div>
+                    <!-- dialog boxes -->
                     <div class="dialogbox_resume">
                         <div class="dialogbox_text">
                             STEAL MY DATA
                         </div>
                         <div class="buttons">
                              <button class="yes" onclick="open_resume()">YES</button>
-  <button class="no" onclick="dialog_display_off('r')">NO</button>
+  <button class="no" onclick="dialog_display_on('close')">NO</button>
                         </div>
                     </div>
                     <div class="dialogbox_shutdown">
@@ -520,9 +525,32 @@ opacity: 1 !important;}
                         </div>
                         <div class="buttons">
                              <button class="yes" onclick="shutdown()">YES</button>
-  <button class="no" onclick="dialog_display_off('s')">NO</button>
+  <button class="no" onclick="dialog_display_on('close')">NO</button>
                         </div>
                     </div>
+                     <div class="dialogbox_contact">
+                    <div class="contact-header"> 
+                        <h1>CONTACT</h1>
+                    </div>
+                    <ul class="contact_list">
+                        <li>
+        <a href="mailto:karthikemmail@gmail.com">
+            <img src="email.png" alt="Email" class="icon">
+        </a>
+    </li>
+    <li>
+        <a href="https://github.com/Karthik-EM" target="_blank">
+            <img src="github.png" alt="GitHub" class="icon">
+        </a>
+    </li>
+    <li>
+        <a href="https://www.linkedin.com/in/karthik-e-m-33449a292/" target="_blank">
+           <img src="linkedin.png" alt="LinkedIn" class="icon" style="margin-top: 9px;height:45px">
+        </a>
+    </li>
+                    </ul>
+                   <div class="close"> <button class="close_button" onclick="dialog_display_on('close')">Close</button></div>
+                </div>
                     <p>Hoi! I’m Karthik — a human in beta version, currently orbiting Earth while juggling 47 tabs and mild existential confusion.</p><br>
                     <p>As a CSE student, I casually wandered into the dark arts of coding with nothing but vibes, a dream, and the hope Google knows the answer.</p><br><p>My proudest achievement so far: fixing a bug after three hours, only to realize it needed a semicolon.</p><br>
                     <p>Right now, I’ve entered the universe of web development, which mostly consists of googling why my div has a mind of its own, wrestling with CSS that refuses to center anything, and offering semicolons to the coding gods because I forget them like it’s a hobby</p>
@@ -579,29 +607,6 @@ opacity: 1 !important;}
                                 style="text-decoration: none; color:#3d43b6e2; ;">"NETHRA"</a> for the visually impaired by combining object detection (DETR), monocular depth estimation (UniDepthV2), and a vision-language model (Qwen-VL) to
  generate spatially-aware scene descriptions. Developed an accessible web app with TTS and chat support.</li>
                     </ul>
-                </div>
-                <div class="dialogbox_contact">
-                    <div class="contact-header"> 
-                        <h1>CONTACT</h1>
-                    </div>
-                    <ul class="contact_list">
-                        <li>
-        <a href="mailto:karthikemmail@gmail.com">
-            <img src="email.png" alt="Email" class="icon">
-        </a>
-    </li>
-    <li>
-        <a href="https://github.com/Karthik-EM" target="_blank">
-            <img src="github.png" alt="GitHub" class="icon">
-        </a>
-    </li>
-    <li>
-        <a href="https://www.linkedin.com/in/karthik-e-m-33449a292/" target="_blank">
-           <img src="linkedin.png" alt="LinkedIn" class="icon" style="margin-top: 9px;height:45px">
-        </a>
-    </li>
-                    </ul>
-                   <div class="close"> <button class="close_button">Close</button></div>
                 </div>
             </div>
         </div>
@@ -771,29 +776,31 @@ document.addEventListener("mousemove", function (e) {
     if(msg=='r')
         {
             document.querySelector(".dialogbox_shutdown").style.display = "none";
+            document.querySelector(".dialogbox_contact").style.display = "none";
             document.querySelector(".dialogbox_resume").style.display = "block";
         }
     else if(msg=='s')
         {
           document.querySelector(".dialogbox_resume").style.display = "none";
+          document.querySelector(".dialogbox_contact").style.display = "none";
             document.querySelector(".dialogbox_shutdown").style.display = "block";
         }
-    else
+    else if(msg=='c')
         {
+            document.querySelector(".dialogbox_resume").style.display = "none";
             document.querySelector(".dialogbox_resume").style.display = "none";
             document.querySelector(".dialogbox_contact").style.display = "block";
         }
+        else
+    {
+
+            document.querySelector(".dialogbox_resume").style.display = "none";
+            document.querySelector(".dialogbox_shutdown").style.display = "none";
+            document.querySelector(".dialogbox_contact").style.display = "none";
+    }
            
         }
-  function dialog_display_off(msg) {
-     if(msg=='r')
-        {
-            document.querySelector(".dialogbox_resume").style.display = "none";
-        }
-        else{  
-            document.querySelector(".dialogbox_shutdown").style.display = "none";
-            }
-        }
+  
 
 //snow logic
 var Snow = {
