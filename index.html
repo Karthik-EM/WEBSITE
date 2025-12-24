@@ -472,6 +472,11 @@ opacity: 1 !important;}
 
   
 }
+@media (max-width: 768px), (hover: none) {
+  #customCursor{
+   display: none;
+  }
+}
 </style>
 
 <body>
@@ -742,7 +747,9 @@ document.addEventListener("dblclick", () => {
 });
 
         //custom mouse pointer follow logic
-        const cursor = document.getElementById("cursorImage");  
+        const isDesktop = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+if (isDesktop) {
+const cursor = document.getElementById("cursorImage");  
 let idleTimer;
 let isMoving = false; // Flag to track state
 
@@ -777,6 +784,7 @@ document.addEventListener("mousemove", function (e) {
         isMoving = false; 
     }, 100);
 });
+}
    //resume
         function open_resume()
         {
