@@ -731,6 +731,7 @@ const postlines = [
         }
         document.querySelector(".mystery").onclick = mystery;
      //cursor avatar changing
+    const cursor = document.getElementById("cursorImage");  
         isflying=0
 document.addEventListener("dblclick", () => {
     if(isflying==0)
@@ -750,7 +751,6 @@ document.addEventListener("dblclick", () => {
         //custom mouse pointer follow logic
         const isDesktop = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 if (isDesktop) {
-const cursor = document.getElementById("cursorImage");  
 let idleTimer;
 let isMoving = false; // Flag to track state
 
