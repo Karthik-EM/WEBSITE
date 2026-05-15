@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karthik</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+Devanagari&family=Noto+Sans+Malayalam&family=Noto+Sans+Sanskrit&display=swap" rel="stylesheet">
-     <link rel="icon" type="image/png" href="favicon.png" sizes="32x32" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+Devanagari&family=Noto+Sans+Malayalam&family=Noto+Sans+Sanskrit&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png" sizes="32x32" />
 
 </head>
 <style>
@@ -45,17 +47,17 @@
 
     .menue {
         width: 100%;
-        height: auto;             
+        height: auto;
         background-color: #252dc4;
         display: flex;
         align-items: center;
-       gap: clamp(6px, 2vw, 14px);
+        gap: clamp(6px, 2vw, 14px);
 
 
 
     }
 
-    .menue button{
+    .menue button {
         margin-left: 10px;
         background: none;
         border: none;
@@ -65,7 +67,7 @@
         cursor: none;
         padding: 4px 8px;
         transition: background-color 0.3s, color 0.3s;
-     
+
     }
 
     .menue button:hover {
@@ -74,39 +76,67 @@
     }
 
     .resume:hover,
-    .shutdown:hover{
+    .shutdown:hover {
         background-color: var(--bg);
         color: rgb(37, 45, 196);
         padding-top: 4px;
         padding-bottom: 4px;
     }
-    #customCursor {
-     position: fixed; 
-    pointer-events: none; 
-    width: 60px;  
-    height: 60px;
-    z-index: 999;
-}
 
-#cursorImage {
-    width: 100%;
-    height: 100%;
-    image-rendering: pixelated; 
-     transform: translate(-55%, -50%);
-}
-  /* mystery glow */
+    #customCursor {
+        position: fixed;
+        pointer-events: none;
+        width: 60px;
+        height: 60px;
+        z-index: 999;
+    }
+
+    #cursorImage {
+        width: 100%;
+        height: 100%;
+        image-rendering: pixelated;
+        transform: translate(-55%, -50%);
+    }
+
+    /* mystery glow */
     @keyframes mysteryGlow {
-    0% { box-shadow: 0 0 10px red; color: red; border-color: red; }
-    25% { box-shadow: 0 0 10px orange; color: orange; border-color: orange; }
-    50% { box-shadow: 0 0 10px lime; color: lime; border-color: lime; }
-    75% { box-shadow: 0 0 10px cyan; color: cyan; border-color: cyan; }
-    100% { box-shadow: 0 0 10px magenta; color: magenta; border-color: magenta; }
-}
-.mystery:hover {
-     padding-top: 4px;
+        0% {
+            box-shadow: 0 0 10px red;
+            color: red;
+            border-color: red;
+        }
+
+        25% {
+            box-shadow: 0 0 10px orange;
+            color: orange;
+            border-color: orange;
+        }
+
+        50% {
+            box-shadow: 0 0 10px lime;
+            color: lime;
+            border-color: lime;
+        }
+
+        75% {
+            box-shadow: 0 0 10px cyan;
+            color: cyan;
+            border-color: cyan;
+        }
+
+        100% {
+            box-shadow: 0 0 10px magenta;
+            color: magenta;
+            border-color: magenta;
+        }
+    }
+
+    .mystery:hover {
+        padding-top: 4px;
         padding-bottom: 4px;
-    animation: mysteryGlow 1.5s infinite linear;
-}
+        animation: mysteryGlow 1.5s infinite linear;
+    }
+
     .contents {
         background-color: var(--bg);
         padding: 4px;
@@ -152,7 +182,7 @@
         line-height: 1.6;
         list-style-type: square;
     }
-    
+
     .about-header,
     .skill-header,
     .edu-header,
@@ -229,12 +259,12 @@
         transition: transform 0.3s ease;
     }
 
-     .contact-header svg {
+    .contact-header svg {
         width: 30px;
         height: 30px;
-        
-       
-    } 
+
+
+    }
 
     .project-header svg {
         width: 50px;
@@ -242,44 +272,47 @@
         margin-top: -3px;
         transition: transform 0.3s ease;
     }
+
     /* contact list */
-.contact_list {
-    display: flex;
-     gap: 54px;
-    list-style: none;
-    display: flex;
-   justify-content: center;
-   margin-top: 10px;
-   
-}
-.contact-header 
-{
-      display: flex;
-       justify-content: center;
-      justify-content: center;
-      position: relative;
-}
-.contact-header h1
-{
- font-size:30px;
-  margin: 0;
-  color: white;
-}
-.close {
-  display: flex;
-  justify-content: center;
-  padding-left: 20px;
-   margin-top: 4px;
-  
-}
+    .contact_list {
+        display: flex;
+        gap: 54px;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
 
-.icon {
-    transition: transform 0.3s ease;
-} 
+    }
 
-.icon:hover {
-    transform: scale(1.3);
-}
+    .contact-header {
+        display: flex;
+        justify-content: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .contact-header h1 {
+        font-size: 30px;
+        margin: 0;
+        color: white;
+    }
+
+    .close {
+        display: flex;
+        justify-content: center;
+        padding-left: 20px;
+        margin-top: 4px;
+
+    }
+
+    .icon {
+        transition: transform 0.3s ease;
+    }
+
+    .icon:hover {
+        transform: scale(1.3);
+    }
+
     .footer {
         background-color: var(--lblue);
         width: 100%;
@@ -323,168 +356,182 @@
         border-width: 3px;
         cursor: pointer;
         display: none;
-        
+
     }
 
- #mysteryscreen
-   {
-   
-    display:none;
-   position: relative;
-   width: 100vw; height: 100vh;
-    touch-action: none;
-  overscroll-behavior: none;
-   }
+    #mysteryscreen {
+
+        display: none;
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        touch-action: none;
+        overscroll-behavior: none;
+    }
 
 
-  .dialogbox_resume,.dialogbox_shutdown,.dialogbox_contact
-  {
-      background-color: #252dc4; 
-      border: 2px solid white;
-      width: 290px;
-       text-align: center;
-       box-shadow: 10px 10px 0px black;
-        padding: 8px;  
-         position: fixed;   
+    .dialogbox_resume,
+    .dialogbox_shutdown,
+    .dialogbox_contact {
+        background-color: #252dc4;
+        border: 2px solid white;
+        width: 290px;
+        text-align: center;
+        box-shadow: 10px 10px 0px black;
+        padding: 8px;
+        position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-         display:none;
-  }
-
-/* yes buuton and no button styles */
-
-   .yes,.no,.close_button{
-      padding: 3px 15px;
-      border: 2px solid white;
-      cursor: none;
-       background: none;
-       margin-top: 16px;
-    transition: background-color 0.3s ease;
+        display: none;
     }
-    .close_button
-    {
+
+    /* yes buuton and no button styles */
+
+    .yes,
+    .no,
+    .close_button {
+        padding: 3px 15px;
+        border: 2px solid white;
+        cursor: none;
+        background: none;
+        margin-top: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    .close_button {
         margin-top: 0px;
     }
-    .yes:hover,.no:hover,.close_button:hover
-    {
+
+    .yes:hover,
+    .no:hover,
+    .close_button:hover {
         background-color: black;
     }
-   /* mystrey screen elements */
-.center {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  white-space: nowrap;  
-}
 
-canvas{
-  background:#000;
-  width:100%;
-  height:100%;
-}
-.thanks
-{
-    background-color: rgba(255, 255, 255, 0); 
-    border: 1px solid #00ff00;
-    padding: 3px;
-    font-weight: bold;
-    font-size: larger;
-    transition: transform 0.3s ease, color 0.3s ease;
-    height: 100px;
-    width: 480px;
-    
-}
-.thanks:hover
-{
-    color: #00ff00;
-    transform: scale(1.1);
-    
-}
+    /* mystrey screen elements */
+    .center {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        white-space: nowrap;
+    }
 
-/* hiding controls from vedio */
-video::-webkit-media-controls-panel {
-display: none !important;
-opacity: 1 !important;}
-#final_bye {
-  color: #00ff00;
- font-size: larger;
-  line-height: 1.8;
-  white-space: pre-wrap; 
-}
-/* name input sttyles */
-#inputbox {
-  margin-top: 10px;
-  background: black;
-  color: #00ff00;
-  border: 1px solid #00ff00;
-  padding: 6px;
-  display: none;
-  cursor: text;
-}
-#inputbox:focus {
-  background: black;
-  color: #00ff00;
-  border: 1px solid #00ff00;
-  outline: none;
-}
+    canvas {
+        background: #000;
+        width: 100%;
+        height: 100%;
+    }
 
-/* mobile view */
-@media (max-width: 480px) {
-    .postScreen
-    {
-        font-size: 3vw;
-    }
-    .header
-    {
-        font-size: 15px;
-    }
-    .contents
-    {
-        font-size: 15px;
-    }
-      .menue button {
-    font-size: 8px;
-    padding: 3px 5px;
-  }
-  .footer {
-        font-size: 15px;
-        letter-spacing: 0px;
-    }
-.thanks
-{
-        width: 70vw;
-        font-size: 3vw;
-}
+    .thanks {
+        background-color: rgba(255, 255, 255, 0);
+        border: 1px solid #00ff00;
+        padding: 3px;
+        font-weight: bold;
+        font-size: larger;
+        transition: transform 0.3s ease, color 0.3s ease;
+        height: 100px;
+        width: 480px;
 
-    .about h1,
-    .skill h1,
-    .edu h1,
-    .contact h1,
-    .project h1 {
-      font-size: x-large;
     }
-   #final_bye {
-  font-size: 0.85rem;
-  width:100%
-}
 
-  
-}
-@media (max-width: 768px), (hover: none) {
-  #customCursor{
-   display: none;
-  }
-}
+    .thanks:hover {
+        color: #00ff00;
+        transform: scale(1.1);
+
+    }
+
+    /* hiding controls from vedio */
+    video::-webkit-media-controls-panel {
+        display: none !important;
+        opacity: 1 !important;
+    }
+
+    #final_bye {
+        color: #00ff00;
+        font-size: larger;
+        line-height: 1.8;
+        white-space: pre-wrap;
+    }
+
+    /* name input sttyles */
+    #inputbox {
+        margin-top: 10px;
+        background: black;
+        color: #00ff00;
+        border: 1px solid #00ff00;
+        padding: 6px;
+        display: none;
+        cursor: text;
+    }
+
+    #inputbox:focus {
+        background: black;
+        color: #00ff00;
+        border: 1px solid #00ff00;
+        outline: none;
+    }
+
+    /* mobile view */
+    @media (max-width: 480px) {
+        .postScreen {
+            font-size: 3vw;
+        }
+
+        .header {
+            font-size: 15px;
+        }
+
+        .contents {
+            font-size: 15px;
+        }
+
+        .menue button {
+            font-size: 8px;
+            padding: 3px 5px;
+        }
+
+        .footer {
+            font-size: 15px;
+            letter-spacing: 0px;
+        }
+
+        .thanks {
+            width: 70vw;
+            font-size: 3vw;
+        }
+
+        .about h1,
+        .skill h1,
+        .edu h1,
+        .contact h1,
+        .project h1 {
+            font-size: x-large;
+        }
+
+        #final_bye {
+            font-size: 0.85rem;
+            width: 100%
+        }
+
+
+    }
+
+    @media (max-width: 768px),
+    (hover: none) {
+        #customCursor {
+            display: none;
+        }
+    }
 </style>
 
 <body>
     <!-- custom cursor -->
-     <div id="customCursor">
-    <img src="stickmanstop.png" id="cursorImage">
-      </div>
+    <div id="customCursor">
+        <img src="stickmanstop.png" id="cursorImage">
+    </div>
 
     <!-- post scrren -->
     <div id="postScreen">
@@ -496,17 +543,17 @@ opacity: 1 !important;}
     </div>
     <!-- mystrey scrren -->
     <div id="mysteryscreen">
-   <canvas id="snow"></canvas>
-       <video id="secretVideo"  style="display:none;">
-        <source src="hi.mp4" type="video/mp4">
-    </video>
+        <canvas id="snow"></canvas>
+        <video id="secretVideo" style="display:none;">
+            <source src="hi.mp4" type="video/mp4">
+        </video>
 
-<div class="center">
-    <div id="final_bye"></div>
-    <input type="text"  id="inputbox">
-    <button class="thanks" onclick="textchanging()">THANKS FOR VISITING</button>
+        <div class="center">
+            <div id="final_bye"></div>
+            <input type="text" id="inputbox">
+            <button class="thanks" onclick="textchanging()">THANKS FOR VISITING</button>
+        </div>
     </div>
-</div>
 
     <!-- main screen -->
     <div id="maincontent">
@@ -534,45 +581,52 @@ opacity: 1 !important;}
                             STEAL MY DATA
                         </div>
                         <div class="buttons">
-                             <button class="yes" onclick="open_resume()">YES</button>
-  <button class="no" onclick="dialog_display_on('close')">NO</button>
+                            <button class="yes" onclick="open_resume()">YES</button>
+                            <button class="no" onclick="dialog_display_on('close')">NO</button>
                         </div>
                     </div>
                     <div class="dialogbox_shutdown">
                         <div class="dialogbox_text">
-                           HASTA LA VISTA
+                            HASTA LA VISTA
                         </div>
                         <div class="buttons">
-                             <button class="yes" onclick="shutdown()">YES</button>
-  <button class="no" onclick="dialog_display_on('close')">NO</button>
+                            <button class="yes" onclick="shutdown()">YES</button>
+                            <button class="no" onclick="dialog_display_on('close')">NO</button>
                         </div>
                     </div>
-                     <div class="dialogbox_contact">
-                    <div class="contact-header"> 
-                        <h1>CONTACT</h1>
+                    <div class="dialogbox_contact">
+                        <div class="contact-header">
+                            <h1>CONTACT</h1>
+                        </div>
+                        <ul class="contact_list">
+                            <li>
+                                <a href="mailto:karthikemmail@gmail.com">
+                                    <img src="email.png" alt="Email" class="icon">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/Karthik-EM" target="_blank">
+                                    <img src="github.png" alt="GitHub" class="icon">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/karthik-e-m-33449a292/" target="_blank">
+                                    <img src="linkedin.png" alt="LinkedIn" class="icon"
+                                        style="margin-top: 9px;height:45px">
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="close"> <button class="close_button"
+                                onclick="dialog_display_on('close')">Close</button></div>
                     </div>
-                    <ul class="contact_list">
-                        <li>
-        <a href="mailto:karthikemmail@gmail.com">
-            <img src="email.png" alt="Email" class="icon">
-        </a>
-    </li>
-    <li>
-        <a href="https://github.com/Karthik-EM" target="_blank">
-            <img src="github.png" alt="GitHub" class="icon">
-        </a>
-    </li>
-    <li>
-        <a href="https://www.linkedin.com/in/karthik-e-m-33449a292/" target="_blank">
-           <img src="linkedin.png" alt="LinkedIn" class="icon" style="margin-top: 9px;height:45px">
-        </a>
-    </li>
-                    </ul>
-                   <div class="close"> <button class="close_button" onclick="dialog_display_on('close')">Close</button></div>
-                </div>
                     <p>Hoi! I’m Karthik — a final year CSE student based in India.</p><br>
-                    <p> I somehow  wandered into the dark arts of coding with nothing but vibes, a dream, and the hope Google knows the answer.</p><br><p>My proudest achievement so far: fixing a bug after three hours, only to realize it needed a semicolon.</p><br>
-                    <p>Right now, I’ve entered the universe of web development, which mostly consists of googling why my div has a mind of its own, wrestling with CSS that refuses to center anything, and offering semicolons to the coding gods because I forget them like it’s a hobby</p>
+                    <p> I somehow wandered into the dark arts of coding with nothing but vibes, a dream, and the hope
+                        Google knows the answer.</p><br>
+                    <p>My proudest achievement so far: fixing a bug after three hours, only to realize it needed a
+                        semicolon.</p><br>
+                    <p>Right now, I’ve entered the universe of web development, which mostly consists of googling why my
+                        div has a mind of its own, wrestling with CSS that refuses to center anything, and offering
+                        semicolons to the coding gods because I forget them like it’s a hobby</p>
                 </div>
                 <div class="skill">
                     <div class="skill-header">
@@ -584,6 +638,7 @@ opacity: 1 !important;}
                     </div>
                     <ul>
                         <li>HTML/CSS/JS</li>
+                        <li>PHP</li>
                         <li>Python</li>
                         <li>c/c++</li>
                         <li>Flask</li>
@@ -613,18 +668,37 @@ opacity: 1 !important;}
                         </svg>
                     </div>
                     <ul style="padding-left:10px;">
-                        <li>
+                        <!-- <li>
                             Created a terminal-based C program  <a
                                 href="https://github.com/Karthik-EM/Namefinder/blob/master/namefinder.c"
                                 style="text-decoration: none; color:#3d43b6e2; ;">"WORD GUESSER"</a> that interacts
                             with users
                             to guess a 4-letter word they think of. The program groups letters into categories and
                             uses user
-                            input to narrow down the possibilities.</li><br>
-                        <li>Built an assistive tool <a
-                                href="https://github.com/TEAM-5-PROJECTS/Vision-assistant"
-                                style="text-decoration: none; color:#3d43b6e2; ;">"NETHRA"</a> for the visually impaired by combining object detection (DETR), monocular depth estimation (UniDepthV2), and a vision-language model (Qwen-VL) to
- generate spatially-aware scene descriptions. Developed an accessible web app with TTS and chat support.</li>
+                            input to narrow down the possibilities.</li><br> -->
+                        <li>Built an assistive tool <a href="https://github.com/TEAM-5-PROJECTS/Vision-assistant"
+                                style="text-decoration: none; color:#3d43b6e2; ;">"NETHRA"</a> for the visually impaired
+                            by combining object detection (DETR), monocular depth estimation (UniDepthV2), and a
+                            vision-language model (Qwen-VL) to
+                            generate spatially-aware scene descriptions. Developed an accessible web app with TTS and
+                            chat support.</li><br>
+                        <li>
+                            Built an
+                            <a href="https://github.com/Karthik-EM/Intelligent-Wildlife-Monitoring-System" style="text-decoration: none; color:#3d43b6e2;">
+                                "INTELLIGENT WILDLIFE MONITORING SYSTEM"
+                            </a>
+                            for real-time wildlife classification, weapon detection, and gunshot recognition using
+                            Flask, PyTorch, YOLO, SpeciesNet, ESP32, and edge sensors with Telegram alert integration.
+                        </li>
+                        <br>
+                        <li>
+                            Developed the
+                            <a href="https://rasaspices.vercel.app/" style="text-decoration: none; color:#3d43b6e2;">
+                                "RASA BRAND WEBSITE"
+                            </a>
+                            for a Kerala-based spice brand with dynamic product catalog rendering, live stock updates,
+                            responsive UI, and Supabase-powered backend inventory management.
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -633,18 +707,18 @@ opacity: 1 !important;}
     </div>
     <script>
         //testing logics
-       //document.getElementById("postScreen").style.display = "none";
-       //document.getElementById("maincontent").style.display = "block";
+        //document.getElementById("postScreen").style.display = "none";
+        //document.getElementById("maincontent").style.display = "block";
         //testing
 
         //showing shutdown
         function shutdown_show() {
-    setTimeout(() => {
-        document.querySelector('.desktop').style.display = 'none';
-        document.querySelector('#start').style.display = 'block';
-    }, 1500); 
-}
-window.onload = shutdown_show;
+            setTimeout(() => {
+                document.querySelector('.desktop').style.display = 'none';
+                document.querySelector('#start').style.display = 'block';
+            }, 1500);
+        }
+        window.onload = shutdown_show;
         //type writer function
         const text = "KARTHIK’S SETUP UTILITY";
         let i = 0;
@@ -659,7 +733,7 @@ window.onload = shutdown_show;
         }
 
         //sound effects
-       const beat = new Audio('beep.mp3');
+        const beat = new Audio('beep.mp3');
 
 
         const hoverElements = document.querySelectorAll('.about, .skill, .edu, .contact, .project,.resume,.shutdown,.mystery,.yes,.no,.thanks,.icon');
@@ -673,20 +747,20 @@ window.onload = shutdown_show;
         });
 
         //post print
-const username = localStorage.getItem("username") || "user";
+        const username = localStorage.getItem("username") || "user";
 
-const postlines = [
-  `Welcome, ${username}`,
-  `CPU Cores Detected: ${navigator.hardwareConcurrency}`,
-  `Device Memory: ${navigator.deviceMemory || "Unknown"} GB`,
-  `Platform: ${navigator.platform}`,
-  "Loading Portfolio Kernel..."
-];
+        const postlines = [
+            `Welcome, ${username}`,
+            `CPU Cores Detected: ${navigator.hardwareConcurrency}`,
+            `Device Memory: ${navigator.deviceMemory || "Unknown"} GB`,
+            `Platform: ${navigator.platform}`,
+            "Loading Portfolio Kernel..."
+        ];
 
 
         const pbeat = new Audio('postbeep.mp3');
-         const startup = new Audio('startup.mp3');
-        let postIndex = 0; 
+        const startup = new Audio('startup.mp3');
+        let postIndex = 0;
         function showpostlines() {
             if (postIndex < postlines.length) {
                 if (i == 0) {
@@ -727,344 +801,327 @@ const postlines = [
         function mystery() {
             document.getElementById("maincontent").style.display = "none";
             document.getElementById("mysteryscreen").style.display = "block";
-        
+
         }
         document.querySelector(".mystery").onclick = mystery;
-     //cursor avatar changing
-    const cursor = document.getElementById("cursorImage");  
-        isflying=0
-document.addEventListener("dblclick", () => {
-    if(isflying==0)
-    {
-    cursor.src = "flying.gif";
-    isflying=1
-    }
-    else
-    {
-    cursor.src = "stickmanrun.gif";
-    isflying=0
-    }
+        //cursor avatar changing
+        const cursor = document.getElementById("cursorImage");
+        isflying = 0
+        document.addEventListener("dblclick", () => {
+            if (isflying == 0) {
+                cursor.src = "flying.gif";
+                isflying = 1
+            }
+            else {
+                cursor.src = "stickmanrun.gif";
+                isflying = 0
+            }
 
-    
-});
+
+        });
 
         //custom mouse pointer follow logic
         const isDesktop = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-if (isDesktop) {
-let idleTimer;
-let isMoving = false; // Flag to track state
+        if (isDesktop) {
+            let idleTimer;
+            let isMoving = false; // Flag to track state
 
-document.addEventListener("mousemove", function (e) {
-    customCursor.style.left = e.clientX + "px";
-    customCursor.style.top = e.clientY +"px";
+            document.addEventListener("mousemove", function (e) {
+                customCursor.style.left = e.clientX + "px";
+                customCursor.style.top = e.clientY + "px";
 
-     // If cursor was not moving before → switch to running
-    if (!isMoving) {
-        if(isflying==0)
-    {
-        cursor.src = "stickmanrun.gif";
-    }
-        else
-        {
-             cursor.src = "flying.gif";
+                // If cursor was not moving before → switch to running
+                if (!isMoving) {
+                    if (isflying == 0) {
+                        cursor.src = "stickmanrun.gif";
+                    }
+                    else {
+                        cursor.src = "flying.gif";
+                    }
+                    isMoving = true;
+                }
+                // Reset idle timer
+                clearTimeout(idleTimer);
+                idleTimer = setTimeout(function () {
+                    // Switch to still image after 100ms idle
+                    if (isflying == 0) {
+                        cursor.src = "stickmanstop.png";
+                    }
+                    else {
+                        cursor.src = "flying.gif";
+                    }
+                    isMoving = false;
+                }, 100);
+            });
         }
-        isMoving = true;
-    }
-    // Reset idle timer
-    clearTimeout(idleTimer);
-    idleTimer = setTimeout(function () {
-        // Switch to still image after 100ms idle
-        if(isflying==0)
-    {
-        cursor.src = "stickmanstop.png";
-    }
-    else
-    {
-         cursor.src = "flying.gif";
-    }
-        isMoving = false; 
-    }, 100);
-});
-}
-   //resume
-        function open_resume()
-        {
+        //resume
+        function open_resume() {
             document.querySelector(".dialogbox_resume").style.display = "none";
-             window.location.href = 'https://drive.google.com/uc?export=download&id=1K0JwopllNkJj_0laJrqLfJfIxSbtpxpj';
+            window.location.href = 'https://drive.google.com/uc?export=download&id=1K0JwopllNkJj_0laJrqLfJfIxSbtpxpj';
 
         }
-// dialog box display
- function dialog_display_on(msg) {
-    if(msg=='r')
-        {
-            document.querySelector(".dialogbox_shutdown").style.display = "none";
-            document.querySelector(".dialogbox_contact").style.display = "none";
-            document.querySelector(".dialogbox_resume").style.display = "block";
-        }
-    else if(msg=='s')
-        {
-          document.querySelector(".dialogbox_resume").style.display = "none";
-          document.querySelector(".dialogbox_contact").style.display = "none";
-            document.querySelector(".dialogbox_shutdown").style.display = "block";
-        }
-    else if(msg=='c')
-        {
-            document.querySelector(".dialogbox_resume").style.display = "none";
-            document.querySelector(".dialogbox_resume").style.display = "none";
-            document.querySelector(".dialogbox_contact").style.display = "block";
-        }
-        else
-    {
+        // dialog box display
+        function dialog_display_on(msg) {
+            if (msg == 'r') {
+                document.querySelector(".dialogbox_shutdown").style.display = "none";
+                document.querySelector(".dialogbox_contact").style.display = "none";
+                document.querySelector(".dialogbox_resume").style.display = "block";
+            }
+            else if (msg == 's') {
+                document.querySelector(".dialogbox_resume").style.display = "none";
+                document.querySelector(".dialogbox_contact").style.display = "none";
+                document.querySelector(".dialogbox_shutdown").style.display = "block";
+            }
+            else if (msg == 'c') {
+                document.querySelector(".dialogbox_resume").style.display = "none";
+                document.querySelector(".dialogbox_resume").style.display = "none";
+                document.querySelector(".dialogbox_contact").style.display = "block";
+            }
+            else {
 
-            document.querySelector(".dialogbox_resume").style.display = "none";
-            document.querySelector(".dialogbox_shutdown").style.display = "none";
-            document.querySelector(".dialogbox_contact").style.display = "none";
-    }
-           
+                document.querySelector(".dialogbox_resume").style.display = "none";
+                document.querySelector(".dialogbox_shutdown").style.display = "none";
+                document.querySelector(".dialogbox_contact").style.display = "none";
+            }
+
         }
-  
 
-//snow logic
-var Snow = {
-  el: "#snow", 
-  density: 10000, 
-  maxHSpeed: 5, 
-  minFallSpeed: 2,
-  canvas: null,
-  ctx: null, 
-  particles: [],
-  colors: [],
-  mp: 1,
-  quit: false,
-  init(){
-    this.canvas = document.querySelector(this.el);
-    this.ctx = this.canvas.getContext("2d");
-    this.reset();
-    requestAnimationFrame(this.render.bind(this));
-    window.addEventListener("resize", this.reset.bind(this));
-  },
-  reset(){
-    this.w = window.innerWidth;
-    this.h = window.innerHeight;
-    this.canvas.width = this.w;
-    this.canvas.height = this.h;
-    this.particles = [];
-    this.mp = Math.ceil(this.w * this.h / this.density);
-    for(var i = 0; i < this.mp; i++)
-    {
-      var size = Math.random()*4+5;
-      this.particles.push({
-        x: Math.random()*this.w, //x-coordinate
-        y: Math.random()*this.h, //y-coordinate
-        w: size,
-        h: size,
-        vy: this.minFallSpeed + Math.random(), //density
-        vx:(Math.random()*this.maxHSpeed) - this.maxHSpeed/2,
-        fill: "#ffffff",
-        s: (Math.random() * 0.2) - 0.1
-      });
-    }
-  },
-  
-  render(){
-    this.ctx.clearRect(0, 0, this.w, this.h);
-    this.particles.forEach((p,i) => {
-      p.y += p.vy;
-      p.x += p.vx;
-      this.ctx.fillStyle = p.fill;
-      this.ctx.fillRect(p.x, p.y, p.w, p.h);
-      if(p.x > this.w+5 || p.x < -5 || p.y > this.h){
-        p.x = Math.random()*this.w;
-        p.y = -10;
-      }
-    });
-    if(this.quit){
-      return;
-    }
-    requestAnimationFrame(this.render.bind(this));
-  },
-  destroy(){
-    this.quit = true;
-  }
-  
-};
 
-var confetti = Snow.init();
-// thanks hange
-const thanks_msg = [
+        //snow logic
+        var Snow = {
+            el: "#snow",
+            density: 10000,
+            maxHSpeed: 5,
+            minFallSpeed: 2,
+            canvas: null,
+            ctx: null,
+            particles: [],
+            colors: [],
+            mp: 1,
+            quit: false,
+            init() {
+                this.canvas = document.querySelector(this.el);
+                this.ctx = this.canvas.getContext("2d");
+                this.reset();
+                requestAnimationFrame(this.render.bind(this));
+                window.addEventListener("resize", this.reset.bind(this));
+            },
+            reset() {
+                this.w = window.innerWidth;
+                this.h = window.innerHeight;
+                this.canvas.width = this.w;
+                this.canvas.height = this.h;
+                this.particles = [];
+                this.mp = Math.ceil(this.w * this.h / this.density);
+                for (var i = 0; i < this.mp; i++) {
+                    var size = Math.random() * 4 + 5;
+                    this.particles.push({
+                        x: Math.random() * this.w, //x-coordinate
+                        y: Math.random() * this.h, //y-coordinate
+                        w: size,
+                        h: size,
+                        vy: this.minFallSpeed + Math.random(), //density
+                        vx: (Math.random() * this.maxHSpeed) - this.maxHSpeed / 2,
+                        fill: "#ffffff",
+                        s: (Math.random() * 0.2) - 0.1
+                    });
+                }
+            },
+
+            render() {
+                this.ctx.clearRect(0, 0, this.w, this.h);
+                this.particles.forEach((p, i) => {
+                    p.y += p.vy;
+                    p.x += p.vx;
+                    this.ctx.fillStyle = p.fill;
+                    this.ctx.fillRect(p.x, p.y, p.w, p.h);
+                    if (p.x > this.w + 5 || p.x < -5 || p.y > this.h) {
+                        p.x = Math.random() * this.w;
+                        p.y = -10;
+                    }
+                });
+                if (this.quit) {
+                    return;
+                }
+                requestAnimationFrame(this.render.bind(this));
+            },
+            destroy() {
+                this.quit = true;
+            }
+
+        };
+
+        var confetti = Snow.init();
+        // thanks hange
+        const thanks_msg = [
             "NANNIYUNDAAA VANNATHIL",
             "CLICK SOME MORE..",
             "ENTHA MADUTHO:)",
             "ORU CLICKUM KUDIYUM",
             "PATICHA:)"
         ];
-let index = -1;
-let j=0;
+        let index = -1;
+        let j = 0;
 
-function playvedio() {
+        function playvedio() {
             const video = document.getElementById("secretVideo");
-            video.style.display = "block";   
+            video.style.display = "block";
             video.play();
             // close vedio
             video.addEventListener("ended", function () {
-            document.exitFullscreen(); 
-            document.getElementById("mysteryscreen").style.display = "none";
-            document.getElementById("maincontent").style.display = "block";
-            video.style.display = "none";   
-            
-});
+                document.exitFullscreen();
+                document.getElementById("mysteryscreen").style.display = "none";
+                document.getElementById("maincontent").style.display = "block";
+                video.style.display = "none";
+
+            });
             video.requestFullscreen();
 
-}
-//status for  code
-code_status=false;
-     //thanks text changing
-     vedio_state=true;
-     function textchanging() {
-           
+        }
+        //status for  code
+        code_status = false;
+        //thanks text changing
+        vedio_state = true;
+        function textchanging() {
+
             const button = document.querySelector(".thanks");
             beat.currentTime = 0;
-                beat.play();
-             
-            if(j==0 || j==3 || j==5 ||j==7||j==8 )
-        {
-             index = (index + 1) % thanks_msg.length;
-            button.innerText = thanks_msg[index];
-        }
-           else{
-         
-            button.innerText = "KEEP GOING "+j;
+            beat.play();
 
-           }
-        if(j==9 )
-        {
-            if(vedio_state)
-            {
-
-                playvedio();
-                vedio_state=false;
-                j=8;
+            if (j == 0 || j == 3 || j == 5 || j == 7 || j == 8) {
+                index = (index + 1) % thanks_msg.length;
+                button.innerText = thanks_msg[index];
             }
-            else
-            {
-                  button.innerText = "up,down,left,right";
-                  code_status=true;
-                  j=0;
-                  
+            else {
+
+                button.innerText = "KEEP GOING " + j;
+
             }
-       }
-        j++;
+            if (j == 9) {
+                if (vedio_state) {
+
+                    playvedio();
+                    vedio_state = false;
+                    j = 8;
+                }
+                else {
+                    button.innerText = "up,down,left,right";
+                    code_status = true;
+                    j = 0;
+
+                }
+            }
+            j++;
         }
-//typing beep
- const type_beep = new Audio('type_beep.mp3')
- //text display sequence
- function startFinalSequence() {
-  console.log("dha pedicho oru easter egg :https://www.youtube.com/watch?v=dQw4w9WgXcQ");
-  document.querySelector(".thanks").style.display = "none";
-  document.querySelector("#snow").style.display = "none";
+        //typing beep
+        const type_beep = new Audio('type_beep.mp3')
+        //text display sequence
+        function startFinalSequence() {
+            console.log("dha pedicho oru easter egg :https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+            document.querySelector(".thanks").style.display = "none";
+            document.querySelector("#snow").style.display = "none";
 
-  const text =
-    "Hey there..\n\n" +
-    "Thanks a ton for hanging out on my site!\n" +
-    "Before you go...\n\n" +
-    "What should I call you?";
+            const text =
+                "Hey there..\n\n" +
+                "Thanks a ton for hanging out on my site!\n" +
+                "Before you go...\n\n" +
+                "What should I call you?";
 
-  const el = document.querySelector("#final_bye");
-  const inputBox = document.querySelector("#inputbox");
+            const el = document.querySelector("#final_bye");
+            const inputBox = document.querySelector("#inputbox");
 
-  let index = 0;
-  const baseSpeed = 32;
+            let index = 0;
+            const baseSpeed = 32;
 
-  function playTypeSound() {
-    const click = type_beep.cloneNode();
-    click.playbackRate = 1.4;
-    click.play();
-  }
+            function playTypeSound() {
+                const click = type_beep.cloneNode();
+                click.playbackRate = 1.4;
+                click.play();
+            }
 
-  function typeText() {
-    if (index >= text.length) {
-      inputBox.style.display = "block";
-      return;
-    }
+            function typeText() {
+                if (index >= text.length) {
+                    inputBox.style.display = "block";
+                    return;
+                }
 
-    const char = text[index];
-    el.textContent += char;
+                const char = text[index];
+                el.textContent += char;
 
-    if (char !== " " && char !== "\n")
-    { 
-    playTypeSound();
-    }
+                if (char !== " " && char !== "\n") {
+                    playTypeSound();
+                }
 
-    index++;
-    let delay = baseSpeed + Math.random() * 20;
-    if (char === "." || char === "\n") delay = 250;
+                index++;
+                let delay = baseSpeed + Math.random() * 20;
+                if (char === "." || char === "\n") delay = 250;
 
-    setTimeout(typeText, delay);
-  }
+                setTimeout(typeText, delay);
+            }
 
-  typeText();
-}
+            typeText();
+        }
 
-//arrow code
-const code = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
-let keys = [];
-//key comparison logic
-function handleKey(key) {
- navigator.vibrate(100);
-  keys.push(key);
+        //arrow code
+        const code = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
+        let keys = [];
+        //key comparison logic
+        function handleKey(key) {
+            navigator.vibrate(100);
+            keys.push(key);
 
-  // keep only last 4 inputs
-  if (keys.length > 4) {
-    keys.shift();
-  }
+            // keep only last 4 inputs
+            if (keys.length > 4) {
+                keys.shift();
+            }
 
-  if (keys.toString() === code.toString()) {
-    code_status = false;
-    startFinalSequence();
-  }
-}
-//desktop arrow events
-document.addEventListener("keydown", (e) => {
-  handleKey(e.key);
-});
-//mobile gesture
-let startX = 0;
-let startY = 0;
+            if (keys.toString() === code.toString()) {
+                code_status = false;
+                startFinalSequence();
+            }
+        }
+        //desktop arrow events
+        document.addEventListener("keydown", (e) => {
+            handleKey(e.key);
+        });
+        //mobile gesture
+        let startX = 0;
+        let startY = 0;
 
-document.addEventListener("touchstart", (e) => {
-  startX = e.touches[0].clientX;
-  startY = e.touches[0].clientY;
-});
+        document.addEventListener("touchstart", (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+        });
 
-document.addEventListener("touchend", (e) => {
-  let endX = e.changedTouches[0].clientX;
-  let endY = e.changedTouches[0].clientY;
+        document.addEventListener("touchend", (e) => {
+            let endX = e.changedTouches[0].clientX;
+            let endY = e.changedTouches[0].clientY;
 
-  let dx = endX - startX;
-  let dy = endY - startY;
+            let dx = endX - startX;
+            let dy = endY - startY;
 
-  if (Math.abs(dx) > Math.abs(dy)) {
-    if (dx > 40) handleKey("ArrowRight");
-    else if (dx < -40) handleKey("ArrowLeft");
-  } else {
-    if (dy > 40) handleKey("ArrowDown");
-    else if (dy < -40) handleKey("ArrowUp");
-  }
-});
+            if (Math.abs(dx) > Math.abs(dy)) {
+                if (dx > 40) handleKey("ArrowRight");
+                else if (dx < -40) handleKey("ArrowLeft");
+            } else {
+                if (dy > 40) handleKey("ArrowDown");
+                else if (dy < -40) handleKey("ArrowUp");
+            }
+        });
 
-//name storing
-const input = document.getElementById("inputbox");
+        //name storing
+        const input = document.getElementById("inputbox");
 
-input.addEventListener("keydown", function (e) {
-  if (e.key === "Enter") {
-    localStorage.setItem("username",input.value);
-    document.getElementById("mysteryscreen").style.display = "none";
-    document.getElementById("maincontent").style.display = "block";
-    document.querySelector("#final_bye").style.display="none";
-    document.querySelector("#inputbox").style.display="none";
-    document.querySelector("#snow").style.display="block";
-  }
-});
+        input.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+                localStorage.setItem("username", input.value);
+                document.getElementById("mysteryscreen").style.display = "none";
+                document.getElementById("maincontent").style.display = "block";
+                document.querySelector("#final_bye").style.display = "none";
+                document.querySelector("#inputbox").style.display = "none";
+                document.querySelector("#snow").style.display = "block";
+            }
+        });
 
 
     </script>
