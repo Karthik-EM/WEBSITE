@@ -1,904 +1,573 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karthik</title>
+    <title>Karthik E M - Setup Utility</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+Devanagari&family=Noto+Sans+Malayalam&family=Noto+Sans+Sanskrit&display=swap"
-        rel="stylesheet">
     <link rel="icon" type="image/png" href="favicon.png" sizes="32x32" />
 
-</head>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        font-family: 'Press Start 2P';
-        color: white;
-        word-break: break-word;
-        overflow-wrap: break-word;
-    }
-
-    body {
-        background: black;
-        color: #00ff00;
-        cursor: none;
-
-    }
-
-    :root {
-        --bg: #aaaaaaff;
-        --bios-text: #00ff00;
-        --lblue: #00cccc;
-    }
-
-    .header {
-        background-color: var(--lblue);
-        width: 100%;
-        height: 30px;
-        font-size: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .menue {
-        width: 100%;
-        height: auto;
-        background-color: #252dc4;
-        display: flex;
-        align-items: center;
-        gap: clamp(6px, 2vw, 14px);
-
-
-
-    }
-
-    .menue button {
-        margin-left: 10px;
-        background: none;
-        border: none;
-        color: white;
-        font-size: 12px;
-        font-family: 'Press Start 2P', cursive;
-        cursor: none;
-        padding: 4px 8px;
-        transition: background-color 0.3s, color 0.3s;
-
-    }
-
-    .menue button:hover {
-        background-color: var(--bg);
-        color: #252dc4;
-    }
-
-    .resume:hover,
-    .shutdown:hover {
-        background-color: var(--bg);
-        color: rgb(37, 45, 196);
-        padding-top: 4px;
-        padding-bottom: 4px;
-    }
-
-    #customCursor {
-        position: fixed;
-        pointer-events: none;
-        width: 60px;
-        height: 60px;
-        z-index: 999;
-    }
-
-    #cursorImage {
-        width: 100%;
-        height: 100%;
-        image-rendering: pixelated;
-        transform: translate(-55%, -50%);
-    }
-
-    /* mystery glow */
-    @keyframes mysteryGlow {
-        0% {
-            box-shadow: 0 0 10px red;
-            color: red;
-            border-color: red;
+    <style>
+        :root {
+            /* Muted Phosphor Palette for Eye Comfort */
+            --term-green: #4ade80; 
+            --term-bg: #0d1117;
+            --term-highlight: #22c55e;
+            --term-shadow: #16202a;
         }
 
-        25% {
-            box-shadow: 0 0 10px orange;
-            color: orange;
-            border-color: orange;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Press Start 2P', monospace;
+            color: var(--term-green);
+            cursor: none; 
+            word-break: break-word;
         }
 
-        50% {
-            box-shadow: 0 0 10px lime;
-            color: lime;
-            border-color: lime;
+        body {
+            background-color: var(--term-bg);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        75% {
-            box-shadow: 0 0 10px cyan;
-            color: cyan;
-            border-color: cyan;
-        }
-
-        100% {
-            box-shadow: 0 0 10px magenta;
-            color: magenta;
-            border-color: magenta;
-        }
-    }
-
-    .mystery:hover {
-        padding-top: 4px;
-        padding-bottom: 4px;
-        animation: mysteryGlow 1.5s infinite linear;
-    }
-
-    .contents {
-        background-color: var(--bg);
-        padding: 4px;
-
-    }
-
-    .largecontainer {
-        width: 100%;
-        height: auto;
-        background-color: var(--bg);
-        border: 2px solid black
-    }
-
-    .about h1,
-    .skill h1,
-    .edu h1,
-    .contact h1,
-    .project h1 {
-        color: black;
-        margin-bottom: 10px;
-        margin-top: 10px;
-    }
-
-    .about,
-    .skill,
-    .edu,
-    .contact,
-    .project {
-        border: 2px solid black;
-    }
-
-    .about p {
-        margin-left: 10px;
-        line-height: 1.6;
-    }
-
-
-    .skill ul,
-    .edu ul,
-    .project ul,
-    .contact ul {
-        margin-left: 25px;
-        line-height: 1.6;
-        list-style-type: square;
-    }
-
-    .about-header,
-    .skill-header,
-    .edu-header,
-    .contact-header,
-    .project-header {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-left: 17px;
-        margin-bottom: 10px;
-    }
-
-    .about-header svg {
-        width: 50px;
-        height: 50px;
-        transition: transform 0.3s ease;
-    }
-
-    .about-header h1,
-    .about-header svg path,
-    .about,
-    .skill-header h1,
-    .skill-header svg path,
-    .skill,
-    .edu-header h1,
-    .edu-header svg path,
-    .edu,
-    /* .contact-header h1,
-    .contact-header svg path,
-    .contact, */
-    .project-header h1,
-    .project-header svg path,
-    .project {
-        transition: color 0.5s ease, fill 0.3s ease, background-color 0.3s ease;
-    }
-
-    .about:hover,
-    .skill:hover,
-    .edu:hover,
-    /* .contact:hover, */
-    .project:hover {
-        background-color: black;
-    }
-
-    .about:hover .about-header h1,
-    .skill:hover .skill-header h1,
-    .edu:hover .edu-header h1,
-    /* .contact:hover .contact-header h1, */
-    .project:hover .project-header h1 {
-        color: yellow;
-    }
-
-    .about:hover .about-header svg,
-    .skill:hover .skill-header svg,
-    .edu:hover .edu-header svg,
-    /* .contact:hover .contact-header svg, */
-    .project:hover .project-header svg {
-        fill: yellow;
-        transform: translateX(10px);
-    }
-
-    .skill-header svg {
-        width: 50px;
-        height: 50px;
-        margin-top: -3px;
-        transition: transform 0.3s ease;
-    }
-
-
-    .edu-header svg {
-        width: 50px;
-        height: 50px;
-        margin-top: 10px;
-        transition: transform 0.3s ease;
-    }
-
-    .contact-header svg {
-        width: 30px;
-        height: 30px;
-
-
-    }
-
-    .project-header svg {
-        width: 50px;
-        height: 50px;
-        margin-top: -3px;
-        transition: transform 0.3s ease;
-    }
-
-    /* contact list */
-    .contact_list {
-        display: flex;
-        gap: 54px;
-        list-style: none;
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-
-    }
-
-    .contact-header {
-        display: flex;
-        justify-content: center;
-        justify-content: center;
-        position: relative;
-    }
-
-    .contact-header h1 {
-        font-size: 30px;
-        margin: 0;
-        color: white;
-    }
-
-    .close {
-        display: flex;
-        justify-content: center;
-        padding-left: 20px;
-        margin-top: 4px;
-
-    }
-
-    .icon {
-        transition: transform 0.3s ease;
-    }
-
-    .icon:hover {
-        transform: scale(1.3);
-    }
-
-    .footer {
-        background-color: var(--lblue);
-        width: 100%;
-        height: 42px;
-        font-size: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        letter-spacing: 1vw;
-    }
-
-    #maincontent {
-        display: none;
-
-    }
-
-    #post-content {
-        color: #00ff00;
-        line-height: 2;
-        margin-left: 20px;
-        margin-top: 20px;
-    }
-
-    .center-button {
-        height: 100vh;
-        width: 100vw;
-        width: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-    }
-
-    #start {
-        color: #00ff00;
-        height: 100px;
-        width: 200px;
-        background: transparent;
-        border-color: #00ff00;
-        font-size: larger;
-        border-width: 3px;
-        cursor: pointer;
-        display: none;
-
-    }
-
-    #mysteryscreen {
-
-        display: none;
-        position: relative;
-        width: 100vw;
-        height: 100vh;
-        touch-action: none;
-        overscroll-behavior: none;
-    }
-
-
-    .dialogbox_resume,
-    .dialogbox_shutdown,
-    .dialogbox_contact {
-        background-color: #252dc4;
-        border: 2px solid white;
-        width: 290px;
-        text-align: center;
-        box-shadow: 10px 10px 0px black;
-        padding: 8px;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        display: none;
-    }
-
-    /* yes buuton and no button styles */
-
-    .yes,
-    .no,
-    .close_button {
-        padding: 3px 15px;
-        border: 2px solid white;
-        cursor: none;
-        background: none;
-        margin-top: 16px;
-        transition: background-color 0.3s ease;
-    }
-
-    .close_button {
-        margin-top: 0px;
-    }
-
-    .yes:hover,
-    .no:hover,
-    .close_button:hover {
-        background-color: black;
-    }
-
-    /* mystrey screen elements */
-    .center {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: white;
-        white-space: nowrap;
-    }
-
-    canvas {
-        background: #000;
-        width: 100%;
-        height: 100%;
-    }
-
-    .thanks {
-        background-color: rgba(255, 255, 255, 0);
-        border: 1px solid #00ff00;
-        padding: 3px;
-        font-weight: bold;
-        font-size: larger;
-        transition: transform 0.3s ease, color 0.3s ease;
-        height: 100px;
-        width: 480px;
-
-    }
-
-    .thanks:hover {
-        color: #00ff00;
-        transform: scale(1.1);
-
-    }
-
-    /* hiding controls from vedio */
-    video::-webkit-media-controls-panel {
-        display: none !important;
-        opacity: 1 !important;
-    }
-
-    #final_bye {
-        color: #00ff00;
-        font-size: larger;
-        line-height: 1.8;
-        white-space: pre-wrap;
-    }
-
-    /* name input sttyles */
-    #inputbox {
-        margin-top: 10px;
-        background: black;
-        color: #00ff00;
-        border: 1px solid #00ff00;
-        padding: 6px;
-        display: none;
-        cursor: text;
-    }
-
-    #inputbox:focus {
-        background: black;
-        color: #00ff00;
-        border: 1px solid #00ff00;
-        outline: none;
-    }
-
-    /* mobile view */
-    @media (max-width: 480px) {
-        .postScreen {
-            font-size: 3vw;
-        }
-
-        .header {
-            font-size: 15px;
-        }
-
-        .contents {
-            font-size: 15px;
-        }
-
-        .menue button {
-            font-size: 8px;
-            padding: 3px 5px;
-        }
-
-        .footer {
-            font-size: 15px;
-            letter-spacing: 0px;
-        }
-
-        .thanks {
-            width: 70vw;
-            font-size: 3vw;
-        }
-
-        .about h1,
-        .skill h1,
-        .edu h1,
-        .contact h1,
-        .project h1 {
-            font-size: x-large;
-        }
-
-        #final_bye {
-            font-size: 0.85rem;
-            width: 100%
-        }
-
-
-    }
-
-    @media (max-width: 768px),
-    (hover: none) {
+        /* Custom Cursor */
         #customCursor {
-            display: none;
+            position: fixed;
+            pointer-events: none;
+            width: 60px;
+            height: 60px;
+            z-index: 10000;
         }
-    }
-</style>
+        #cursorImage {
+            width: 100%;
+            height: 100%;
+            image-rendering: pixelated;
+            transform: translate(-55%, -50%);
+        }
 
+        /* POST Boot Screen */
+        #postScreen {
+            padding: 20px;
+            font-size: 14px;
+            line-height: 2;
+            height: 100vh;
+            display: block;
+        }
+        .center-button {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        #start {
+            background: var(--term-bg);
+            border: 2px solid var(--term-green);
+            padding: 15px 30px;
+            font-size: 16px;
+            transition: all 0.2s;
+            box-shadow: 4px 4px 0px var(--term-shadow);
+        }
+        #start:hover {
+            background: var(--term-green);
+            color: var(--term-bg);
+        }
+        .desktop-warn {
+            margin-top: 15px;
+            font-size: 10px;
+            opacity: 0.7;
+        }
+
+        /* Main UI - Tabbed PhoenixBIOS Layout */
+        #maincontent {
+            display: none;
+            flex-direction: column;
+            height: 100vh;
+            padding: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .bios-header {
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--term-green);
+            line-height: 1.8;
+        }
+
+        /* Horizontal Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: -2px; /* Pull down to overlap border */
+            z-index: 10;
+            position: relative;
+        }
+        .nav-tabs button {
+            background: var(--term-bg);
+            border: 2px solid var(--term-green);
+            border-bottom: none;
+            padding: 12px 20px;
+            font-size: 12px;
+            color: var(--term-green);
+            transition: 0.2s;
+        }
+        .nav-tabs button:hover {
+            background: var(--term-shadow);
+        }
+        .nav-tabs button.active {
+            background: var(--term-green);
+            color: var(--term-bg);
+        }
+
+        .mystery-btn {
+            margin-left: auto; /* Pushes mystery button to the far right on desktop */
+            animation: pulse-text 2s infinite;
+        }
+        @keyframes pulse-text {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Central Content Window */
+        .content-window {
+            flex-grow: 1;
+            border: 2px solid var(--term-green);
+            padding: 30px;
+            background: var(--term-bg);
+            box-shadow: 6px 6px 0px var(--term-shadow);
+            position: relative;
+            overflow-y: auto;
+        }
+
+        .tab-pane {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+            line-height: 2;
+            font-size: 14px;
+        }
+        .tab-pane.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            border-bottom: 2px dashed var(--term-green);
+            padding-bottom: 15px;
+        }
+        .tab-header h2 { font-size: 20px; }
+        .tab-header svg {
+            width: 45px; height: 45px;
+            fill: var(--term-green);
+        }
+
+        .tab-pane p { margin-bottom: 20px; }
+        .tab-pane ul {
+            list-style-type: square;
+            padding-left: 30px;
+        }
+        .tab-pane li { margin-bottom: 15px; }
+
+        .tab-pane a {
+            color: var(--term-bg);
+            background-color: var(--term-green);
+            text-decoration: none;
+            padding: 2px 6px;
+        }
+        .tab-pane a:hover {
+            background-color: var(--term-highlight);
+        }
+
+        /* Contact Grid inside Tab */
+        .contact_list {
+            display: flex;
+            justify-content: flex-start;
+            gap: 40px;
+            list-style: none;
+            margin-top: 30px;
+            padding-left: 0;
+        }
+        .contact_list img {
+            width: 50px; height: 50px;
+            transition: transform 0.3s;
+            filter: drop-shadow(0px 4px 0px var(--term-shadow));
+        }
+        .contact_list img:hover { transform: translateY(-5px); }
+
+        /* Action Buttons inside Tabs (Resume / Shutdown) */
+        .action-button {
+            background: var(--term-bg);
+            border: 2px dashed var(--term-green);
+            padding: 15px 30px;
+            font-size: 14px;
+            margin-top: 20px;
+            transition: 0.2s;
+            line-height: 1.8;
+        }
+        .action-button:hover {
+            background: var(--term-green);
+            color: var(--term-bg);
+            border-style: solid;
+        }
+
+        .bios-footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        /* Mystery Screen Overlay */
+        #mysteryscreen {
+            display: none; position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: black; z-index: 5000;
+        }
+        #mysteryscreen canvas { width: 100%; height: 100%; }
+        .mystery-center {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); text-align: center;
+            width: 90%;
+        }
+        #final_bye {
+            font-size: 16px; line-height: 2;
+            white-space: pre-wrap; margin-bottom: 20px;
+        }
+        #inputbox {
+            background: transparent; border: 1px solid var(--term-green);
+            color: var(--term-green); padding: 10px; display: none;
+            text-align: center; font-size: 14px; width: 250px; margin: 0 auto;
+        }
+        #inputbox:focus { outline: none; box-shadow: 0 0 10px var(--term-green); }
+        .thanks {
+            background: transparent; border: 2px solid var(--term-green);
+            padding: 15px; font-size: 14px; transition: transform 0.2s; margin: 0 auto;
+        }
+        .thanks:hover {
+            transform: scale(1.05); background: var(--term-green); color: var(--term-bg);
+        }
+
+        /* Responsive Tweaks */
+/* Responsive Tweaks */
+        @media (max-width: 768px) {
+            #customCursor { display: none; }
+            * { cursor: auto !important; }
+            
+            /* Turn mobile menu into a compact 2-column grid */
+            .nav-tabs { 
+                display: grid; 
+                grid-template-columns: 1fr 1fr; 
+                gap: 4px; 
+                margin-bottom: 15px; 
+            }
+            .nav-tabs button { 
+                width: 100%; 
+                text-align: center; 
+                padding: 10px 5px; 
+                font-size: 10px; 
+                border-bottom: 2px solid var(--term-green); 
+            }
+            
+   
+            
+            .content-window { padding: 15px; box-shadow: none; border-top: none; }
+            .tab-header h2 { font-size: 16px; }
+            .tab-pane { font-size: 12px; }
+            .contact_list { justify-content: center; }
+            .bios-header { padding: 5px; margin-bottom: 10px; }
+             .bios-footer {font-size: 10px;}
+        }
+    </style>
+</head>
 <body>
-    <!-- custom cursor -->
+
     <div id="customCursor">
-        <img src="stickmanstop.png" id="cursorImage">
+        <img src="stickmanstop.png" id="cursorImage" onerror="this.style.display='none'">
     </div>
 
-    <!-- post scrren -->
     <div id="postScreen">
         <div id="post-content"></div>
-        <div class="center-button">
+        <div class="center-button" id="start-container">
             <button id="start">POWER ON</button>
-            <div class="desktop" style="color: #00ff00;">BEST VIEWD ON DESKTOP</div>
+            <div class="desktop-warn">BEST VIEWED ON DESKTOP</div>
         </div>
     </div>
-    <!-- mystrey scrren -->
+
+    <div id="maincontent">
+        <div class="bios-header">
+            <div>ROM PCI/ISA BIOS</div>
+            <div id="typewriter"></div>
+        </div>
+
+        <div class="nav-tabs">
+            <button class="tab-btn active" data-target="about">ABOUT</button>
+            <button class="tab-btn" data-target="skills">SKILLS</button>
+            <button class="tab-btn" data-target="edu">EDUCATION</button>
+            <button class="tab-btn" data-target="projects">PROJECTS</button>
+            <button class="tab-btn" data-target="contact">CONTACT</button>
+            <button class="tab-btn" data-target="system">Resume</button>
+            <button class="tab-btn" style="margin-left: auto;"onclick="executeShutdown()" data-target="system">SHUTDOWN</button>
+           
+        </div>
+
+        <div class="content-window">
+            
+            <div id="about" class="tab-pane active">
+                <div class="tab-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M10 2h4v4h-4V2zM7 7h10v2h-2v13h-2v-6h-2v6H9V9H7V7zM5 5v2h2V5H5zm0 0H3V3h2v2zm14 0v2h-2V5h2zm0 0V3h2v2h-2z"></path>
+                    </svg>
+                    <h2>ABOUT ME</h2>
+                </div>
+                <p>Hoi! I'm Karthik — a final year CSE student from India who enjoys building things with code, curiosity, and an unhealthy attachment to free-tier services.</p>
+                <p>Lately, I’ve been working across backend systems, AI-powered tools, and embedded projects  mostly by stitching together ideas, debugging strange errors, and seeing how far free infrastructure can be pushed before it politely asks for a credit card.</p>
+                <p>I’ve built projects ranging from assistive AI tools for the visually impaired and wildlife monitoring systems to business platforms, automation tools, and whatever random idea decides to occupy my brain at 2 AM.</p>
+                <p>I like building things that are useful, slightly unconventional, and interesting enough to keep me awake all night</p>
+            </div>
+
+            <div id="skills" class="tab-pane">
+                <div class="tab-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M8 5h2v2H8V5zM6 7h2v2H6V7zM4 9h2v2H4V9zm-2 2h2v2H2v-2zm2 2h2v2H4v-2zm2 2h2v2H6v-2zm2 2h2v2H8v-2zm8-12h-2v2h2V5zm2 2h-2v2h2V7zm2 2h-2v2h2V9zm2 2h-2v2h2v-2zm-2 2h-2v2h2v-2zm-2 2h-2v2h2v-2zm-2 2h-2v2h2v-2z"></path>
+                    </svg>
+                    <h2>SKILLS</h2>
+                </div>
+                <ul>
+                    <li><strong>Frontend:</strong> HTML / CSS / JS / Flutter</li>
+                    <li><strong>Backend:</strong> Python / Flask / PHP / Supabase</li>
+                    <li><strong>Core:</strong> C / C++ / LaTeX</li>
+                    <li><strong>Hardware/AI:</strong> ESP32 / IoT / YOLO / OpenCV</li>
+                </ul>
+            </div>
+
+            <div id="edu" class="tab-pane">
+                <div class="tab-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M9 2H5v4h4V2zm7 7V7H2v9h2v6h2v-6h2v6h2V9h6zm-5-7h11v14H11v-2h9V4h-9V2z"></path>
+                    </svg>
+                    <h2>EDUCATION</h2>
+                </div>
+                <ul>
+                    <li><strong>B.Tech in Computer Science and Engineering</strong></li>
+                    <p style="margin-top: 10px;">Adi Shankara Institute of Engineering Technology<br>Kalady, Kerala<br>2022 – 2026</p>
+                </ul>
+            </div>
+
+            <div id="projects" class="tab-pane">
+                <div class="tab-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 1h2v8h8v4h-2v-2h-8V5h-2V3h2V1zM8 7V5h2v2H8zM6 9V7h2v2H6zm-2 2V9h2v2H4zm10 8v2h-2v2h-2v-8H2v-4h2v2h8v6h2zm2-2v2h-2v-2h2zm2-2v2h-2v-2h2zm0 0h2v-2h-2v2z"></path>
+                    </svg>
+                    <h2>PROJECTS</h2>
+                </div>
+                <ul>
+                    <li>Built an assistive tool <a href="https://github.com/TEAM-5-PROJECTS/Vision-assistant" target="_blank">"NETHRA"</a> for the visually impaired combining object detection (DETR), monocular depth estimation (UniDepthV2), and a vision-language model to generate spatially-aware scene descriptions.</li>
+                    <li>Engineered an <a href="https://github.com/Karthik-EM/Intelligent-Wildlife-Monitoring-System" target="_blank">"INTELLIGENT WILDLIFE MONITORING SYSTEM"</a> for real-time threat recognition using Flask, PyTorch, YOLO, and ESP32 edge sensors.</li>
+                    <li>Developed  and deployed a <a href="https://rasaspices.vercel.app/" target="_blank">"RASA BRAND WEBSITE"</a> for a Kerala-based spice brand,presenting their product catalog with live
+stock status and dynamic pricing powered by Supabase.</li>
+                </ul>
+            </div>
+
+            <div id="contact" class="tab-pane">
+                <div class="tab-header">
+                    <h2>NETWORK CONFIG (CONTACT)</h2>
+                </div>
+                <p>Ping me across the web:</p>
+                <ul class="contact_list">
+                    <li><a href="mailto:karthikemmail@gmail.com"><img src="email.png" alt="Email"></a></li>
+                    <li><a href="https://github.com/Karthik-EM" target="_blank"><img src="github.png" alt="GitHub"></a></li>
+                    <li><a href="https://www.linkedin.com/in/karthik-e-m-33449a292/" target="_blank"><img src="linkedin.png" alt="LinkedIn"></a></li>
+                </ul>
+            </div>
+
+            <div id="system" class="tab-pane">
+                <div class="tab-header">
+                    <h2>SYSTEM UTILITIES</h2>
+                </div>
+                <p>Load external resources or explore unknown protocols.</p>
+                
+                <button class="action-button" onclick="window.open('https://drive.google.com/uc?export=download&id=1K0JwopllNkJj_0laJrqLfJfIxSbtpxpj', '_blank');">
+                    > INITIATE DATA DOWNLOAD (RESUME)
+                </button>
+                <br>
+                     <button class="action-button mystery-btn" onclick="triggerMystery()">???</button>
+            </div>
+
+        </div>
+        
+        <div class="bios-footer">All bugs are features ;]</div>
+    </div>
+
+
     <div id="mysteryscreen">
         <canvas id="snow"></canvas>
-        <video id="secretVideo" style="display:none;">
+        <video id="secretVideo" style="display:none; width: 100vw; height: 100vh;">
             <source src="hi.mp4" type="video/mp4">
         </video>
-
-        <div class="center">
+        <div class="mystery-center">
             <div id="final_bye"></div>
-            <input type="text" id="inputbox">
+            <input type="text" id="inputbox" placeholder="ENTER NAME" autocomplete="off">
             <button class="thanks" onclick="textchanging()">THANKS FOR VISITING</button>
         </div>
     </div>
 
-    <!-- main screen -->
-    <div id="maincontent">
-        <div class="header" id="typewriter"></div>
-        <div class="menue">
-            <button class="resume" onclick="dialog_display_on('r')">Resume</button>
-            <button class="shutdown" onclick="dialog_display_on('c')">Contact</button>
-            <button class="shutdown" onclick="dialog_display_on('s')">Shutdown</button>
-            <button class="mystery">Mystery</button>
-        </div>
-        <div class="contents">
-            <div class="largecontainer">
-                <div class="about">
-                    <div class="about-header">
-                        <h1>ABOUT ME</h1>
-                        <svg fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path
-                                d="M10 2h4v4h-4V2zM7 7h10v2h-2v13h-2v-6h-2v6H9V9H7V7zM5 5v2h2V5H5zm0 0H3V3h2v2zm14 0v2h-2V5h2zm0 0V3h2v2h-2z">
-                        </svg>
-
-                    </div>
-                    <!-- dialog boxes -->
-                    <div class="dialogbox_resume">
-                        <div class="dialogbox_text">
-                            STEAL MY DATA
-                        </div>
-                        <div class="buttons">
-                            <button class="yes" onclick="open_resume()">YES</button>
-                            <button class="no" onclick="dialog_display_on('close')">NO</button>
-                        </div>
-                    </div>
-                    <div class="dialogbox_shutdown">
-                        <div class="dialogbox_text">
-                            HASTA LA VISTA
-                        </div>
-                        <div class="buttons">
-                            <button class="yes" onclick="shutdown()">YES</button>
-                            <button class="no" onclick="dialog_display_on('close')">NO</button>
-                        </div>
-                    </div>
-                    <div class="dialogbox_contact">
-                        <div class="contact-header">
-                            <h1>CONTACT</h1>
-                        </div>
-                        <ul class="contact_list">
-                            <li>
-                                <a href="mailto:karthikemmail@gmail.com">
-                                    <img src="email.png" alt="Email" class="icon">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://github.com/Karthik-EM" target="_blank">
-                                    <img src="github.png" alt="GitHub" class="icon">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.linkedin.com/in/karthik-e-m-33449a292/" target="_blank">
-                                    <img src="linkedin.png" alt="LinkedIn" class="icon"
-                                        style="margin-top: 9px;height:45px">
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="close"> <button class="close_button"
-                                onclick="dialog_display_on('close')">Close</button></div>
-                    </div>
-                    <p>Hoi! I’m Karthik — a final year CSE student based in India.</p><br>
-                    <p> I somehow wandered into the dark arts of coding with nothing but vibes, a dream, and the hope
-                        Google knows the answer.</p><br>
-                    <p>My proudest achievement so far: fixing a bug after three hours, only to realize it needed a
-                        semicolon.</p><br>
-                    <p>Right now, I’ve entered the universe of web development, which mostly consists of googling why my
-                        div has a mind of its own, wrestling with CSS that refuses to center anything, and offering
-                        semicolons to the coding gods because I forget them like it’s a hobby</p>
-                </div>
-                <div class="skill">
-                    <div class="skill-header">
-                        <h1>SKILLS</h1>
-                        <svg fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path
-                                d="M8 5h2v2H8V5zM6 7h2v2H6V7zM4 9h2v2H4V9zm-2 2h2v2H2v-2zm2 2h2v2H4v-2zm2 2h2v2H6v-2zm2 2h2v2H8v-2zm8-12h-2v2h2V5zm2 2h-2v2h2V7zm2 2h-2v2h2V9zm2 2h-2v2h2v-2zm-2 2h-2v2h2v-2zm-2 2h-2v2h2v-2zm-2 2h-2v2h2v-2z">
-                        </svg>
-                    </div>
-                    <ul>
-                        <li>HTML/CSS/JS</li>
-                        <li>PHP</li>
-                        <li>Python</li>
-                        <li>c/c++</li>
-                        <li>Flask</li>
-                    </ul>
-                </div>
-                <DIV class="edu">
-                    <div class="edu-header">
-                        <h1 class="qualififlyingion">EDUCATION</h1>
-                        <svg fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M9 2H5v4h4V2zm7 7V7H2v9h2v6h2v-6h2v6h2V9h6zm-5-7h11v14H11v-2h9V4h-9V2z">
-                        </svg>
-
-                    </div>
-                    <ul>
-                        <li>BTECH in Computer Science</li>
-                        <p>Adi Shankara Institute of Engineering Technology
-                            College in Kalady, Kerala, 2022 – 2026
-                    </ul>
-                </DIV>
-
-                <div class="project">
-                    <div class="project-header">
-                        <h1 style=" padding-bottom: 10px;">PROJECTS</h1>
-                        <svg fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path
-                                d="M12 1h2v8h8v4h-2v-2h-8V5h-2V3h2V1zM8 7V5h2v2H8zM6 9V7h2v2H6zm-2 2V9h2v2H4zm10 8v2h-2v2h-2v-8H2v-4h2v2h8v6h2zm2-2v2h-2v-2h2zm2-2v2h-2v-2h2zm0 0h2v-2h-2v2z">
-                        </svg>
-                    </div>
-                    <ul style="padding-left:10px;">
-                        <!-- <li>
-                            Created a terminal-based C program  <a
-                                href="https://github.com/Karthik-EM/Namefinder/blob/master/namefinder.c"
-                                style="text-decoration: none; color:#3d43b6e2; ;">"WORD GUESSER"</a> that interacts
-                            with users
-                            to guess a 4-letter word they think of. The program groups letters into categories and
-                            uses user
-                            input to narrow down the possibilities.</li><br> -->
-                        <li>Built an assistive tool <a href="https://github.com/TEAM-5-PROJECTS/Vision-assistant"
-                                style="text-decoration: none; color:#3d43b6e2; ;">"NETHRA"</a> for the visually impaired
-                            by combining object detection (DETR), monocular depth estimation (UniDepthV2), and a
-                            vision-language model (Qwen-VL) to
-                            generate spatially-aware scene descriptions. Developed an accessible web app with TTS and
-                            chat support.</li><br>
-                        <li>
-                            Built an
-                            <a href="https://github.com/Karthik-EM/Intelligent-Wildlife-Monitoring-System" style="text-decoration: none; color:#3d43b6e2;">
-                                "INTELLIGENT WILDLIFE MONITORING SYSTEM"
-                            </a>
-                            for real-time wildlife classification, weapon detection, and gunshot recognition using
-                            Flask, PyTorch, YOLO, SpeciesNet, ESP32, and edge sensors with Telegram alert integration.
-                        </li>
-                        <br>
-                        <li>
-                            Developed the
-                            <a href="https://rasaspices.vercel.app/" style="text-decoration: none; color:#3d43b6e2;">
-                                "RASA BRAND WEBSITE"
-                            </a>
-                            for a Kerala-based spice brand with dynamic product catalog rendering, live stock updates,
-                            responsive UI, and Supabase-powered backend inventory management.
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer">All bugs are features ;]</div>
-    </div>
     <script>
-        //testing logics
-        //document.getElementById("postScreen").style.display = "none";
-        //document.getElementById("maincontent").style.display = "block";
-        //testing
-
-        //showing shutdown
-        function shutdown_show() {
-            setTimeout(() => {
-                document.querySelector('.desktop').style.display = 'none';
-                document.querySelector('#start').style.display = 'block';
-            }, 1500);
-        }
-        window.onload = shutdown_show;
-        //type writer function
-        const text = "KARTHIK’S SETUP UTILITY";
-        let i = 0;
-        const speed = 75;
-
-        function typeWriter() {
-            if (i < text.length) {
-                document.getElementById("typewriter").innerHTML += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, speed);
-            }
+        // --- Setup Logic & Audio Dummy Catchers ---
+        function safeAudio(src) {
+            const a = new Audio(src);
+            a.volume = 0.5;
+            return {
+                play: () => a.play().catch(() => {}),
+                cloneNode: () => safeAudio(src),
+                get currentTime() { return a.currentTime; },
+                set currentTime(val) { a.currentTime = val; }
+            };
         }
 
-        //sound effects
-        const beat = new Audio('beep.mp3');
+        const beat = safeAudio('beep.mp3');
+        const pbeat = safeAudio('postbeep.mp3');
+        const startup = safeAudio('startup.mp3');
+        const type_beep = safeAudio('type_beep.mp3');
 
-
-        const hoverElements = document.querySelectorAll('.about, .skill, .edu, .contact, .project,.resume,.shutdown,.mystery,.yes,.no,.thanks,.icon');
-
-        hoverElements.forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                beat.currentTime = 0;
-                beat.play();
-
-            });
+        // Hover sounds
+        document.querySelectorAll('button, .contact_list img').forEach(el => {
+            el.addEventListener('click', () => { beat.currentTime = 0; beat.play(); });
         });
 
-        //post print
-        const username = localStorage.getItem("username") || "user";
-
+        // --- POST Screen Sequence ---
+        const username = localStorage.getItem("username") || "USER";
         const postlines = [
             `Welcome, ${username}`,
-            `CPU Cores Detected: ${navigator.hardwareConcurrency}`,
+            `CPU Cores Detected: ${navigator.hardwareConcurrency || 4}`,
             `Device Memory: ${navigator.deviceMemory || "Unknown"} GB`,
             `Platform: ${navigator.platform}`,
             "Loading Portfolio Kernel..."
         ];
-
-
-        const pbeat = new Audio('postbeep.mp3');
-        const startup = new Audio('startup.mp3');
+        
         let postIndex = 0;
         function showpostlines() {
+            if (postIndex === 0) {
+                document.getElementById("start-container").style.display = "none";
+            }
             if (postIndex < postlines.length) {
-                if (i == 0) {
-                    document.getElementById("start").style.display = "none";
-                }
                 pbeat.currentTime = 0;
                 pbeat.play();
-                document.getElementById("post-content").innerHTML += postlines[postIndex] + "<br>"
+                document.getElementById("post-content").innerHTML += postlines[postIndex] + "<br>";
                 postIndex++;
                 setTimeout(showpostlines, 600);
-            }
-            else {
-                //post screen changing logic
+            } else {
                 setTimeout(() => {
                     document.getElementById("postScreen").style.display = "none";
-                    document.getElementById("maincontent").style.display = "block";
+                    document.getElementById("maincontent").style.display = "flex";
                     startup.currentTime = 0;
                     startup.play();
-                    typeWriter();
-                }, 1);
+                    typeWriterTitle();
+                }, 100);
             }
         }
-
         document.querySelector("#start").onclick = showpostlines;
-        //shut down
-        function shutdown() {
-            document.getElementById("typewriter").innerHTML = "";
-            document.getElementById("maincontent").style.display = "none";
-            document.getElementById("postScreen").style.display = "block";
-            document.getElementById("start").style.display = "block";
-            document.getElementById("post-content").innerHTML = "";
-            document.querySelector(".dialogbox_shutdown").style.display = "none";
-            postIndex = 0;
-            i = 0;
 
-        }
-        //mystery
-        function mystery() {
-            document.getElementById("maincontent").style.display = "none";
-            document.getElementById("mysteryscreen").style.display = "block";
-
-        }
-        document.querySelector(".mystery").onclick = mystery;
-        //cursor avatar changing
-        const cursor = document.getElementById("cursorImage");
-        isflying = 0
-        document.addEventListener("dblclick", () => {
-            if (isflying == 0) {
-                cursor.src = "flying.gif";
-                isflying = 1
+        // --- Typewriter Header ---
+        const titleText = "KARTHIK'S SETUP UTILITY";
+        let twIndex = 0;
+        function typeWriterTitle() {
+            if (twIndex < titleText.length) {
+                document.getElementById("typewriter").innerHTML += titleText.charAt(twIndex);
+                twIndex++;
+                setTimeout(typeWriterTitle, 75);
             }
-            else {
-                cursor.src = "stickmanrun.gif";
-                isflying = 0
-            }
+        }
 
+        // --- Tab Navigation Logic ---
+        const tabBtns = document.querySelectorAll('.tab-btn[data-target]');
+        const tabPanes = document.querySelectorAll('.tab-pane');
 
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabPanes.forEach(p => p.classList.remove('active'));
+                
+                // Add active class to clicked
+                btn.classList.add('active');
+                const targetId = btn.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            });
         });
 
-        //custom mouse pointer follow logic
-        const isDesktop = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-        if (isDesktop) {
-            let idleTimer;
-            let isMoving = false; // Flag to track state
+        // --- Shutdown Utility ---
+        function executeShutdown() {
+            document.getElementById("maincontent").style.display = "none";
+            document.getElementById("postScreen").style.display = "block";
+            document.getElementById("post-content").innerHTML = "";
+            document.getElementById("start-container").style.display = "block";
+            document.getElementById("typewriter").innerHTML = "";
+            
+            // Reset to first tab
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabPanes.forEach(p => p.classList.remove('active'));
+            tabBtns[0].classList.add('active');
+            tabPanes[0].classList.add('active');
 
-            document.addEventListener("mousemove", function (e) {
+            postIndex = 0; twIndex = 0;
+        }
+
+        // --- Custom Cursor Logic ---
+        const customCursor = document.getElementById("customCursor");
+        const cursorImage = document.getElementById("cursorImage");
+        let isflying = false;
+        
+        if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+            let idleTimer;
+            let isMoving = false;
+
+            document.addEventListener("mousemove", (e) => {
                 customCursor.style.left = e.clientX + "px";
                 customCursor.style.top = e.clientY + "px";
 
-                // If cursor was not moving before → switch to running
                 if (!isMoving) {
-                    if (isflying == 0) {
-                        cursor.src = "stickmanrun.gif";
-                    }
-                    else {
-                        cursor.src = "flying.gif";
-                    }
+                    cursorImage.src = isflying ? "flying.gif" : "stickmanrun.gif";
                     isMoving = true;
                 }
-                // Reset idle timer
                 clearTimeout(idleTimer);
-                idleTimer = setTimeout(function () {
-                    // Switch to still image after 100ms idle
-                    if (isflying == 0) {
-                        cursor.src = "stickmanstop.png";
-                    }
-                    else {
-                        cursor.src = "flying.gif";
-                    }
+                idleTimer = setTimeout(() => {
+                    cursorImage.src = isflying ? "flying.gif" : "stickmanstop.png";
                     isMoving = false;
                 }, 100);
             });
         }
-        //resume
-        function open_resume() {
-            document.querySelector(".dialogbox_resume").style.display = "none";
-            window.location.href = 'https://drive.google.com/uc?export=download&id=1K0JwopllNkJj_0laJrqLfJfIxSbtpxpj';
+        
+        document.addEventListener("dblclick", () => {
+            isflying = !isflying;
+            cursorImage.src = isflying ? "flying.gif" : "stickmanstop.png";
+        });
 
-        }
-        // dialog box display
-        function dialog_display_on(msg) {
-            if (msg == 'r') {
-                document.querySelector(".dialogbox_shutdown").style.display = "none";
-                document.querySelector(".dialogbox_contact").style.display = "none";
-                document.querySelector(".dialogbox_resume").style.display = "block";
-            }
-            else if (msg == 's') {
-                document.querySelector(".dialogbox_resume").style.display = "none";
-                document.querySelector(".dialogbox_contact").style.display = "none";
-                document.querySelector(".dialogbox_shutdown").style.display = "block";
-            }
-            else if (msg == 'c') {
-                document.querySelector(".dialogbox_resume").style.display = "none";
-                document.querySelector(".dialogbox_resume").style.display = "none";
-                document.querySelector(".dialogbox_contact").style.display = "block";
-            }
-            else {
-
-                document.querySelector(".dialogbox_resume").style.display = "none";
-                document.querySelector(".dialogbox_shutdown").style.display = "none";
-                document.querySelector(".dialogbox_contact").style.display = "none";
-            }
-
+        // --- Mystery Screen Logic ---
+        function triggerMystery() {
+            document.getElementById("maincontent").style.display = "none";
+            document.getElementById("mysteryscreen").style.display = "block";
+            if (!snowInitialized) { Snow.init(); snowInitialized = true; }
         }
 
-
-        //snow logic
-        var Snow = {
-            el: "#snow",
-            density: 10000,
-            maxHSpeed: 5,
-            minFallSpeed: 2,
-            canvas: null,
-            ctx: null,
-            particles: [],
-            colors: [],
-            mp: 1,
-            quit: false,
+        // Snow Canvas
+        let snowInitialized = false;
+        const Snow = {
+            el: "#snow", density: 10000, maxHSpeed: 5, minFallSpeed: 2,
+            canvas: null, ctx: null, particles: [], mp: 1, quit: false,
             init() {
                 this.canvas = document.querySelector(this.el);
                 this.ctx = this.canvas.getContext("2d");
@@ -907,224 +576,145 @@
                 window.addEventListener("resize", this.reset.bind(this));
             },
             reset() {
-                this.w = window.innerWidth;
-                this.h = window.innerHeight;
-                this.canvas.width = this.w;
-                this.canvas.height = this.h;
+                this.w = window.innerWidth; this.h = window.innerHeight;
+                this.canvas.width = this.w; this.canvas.height = this.h;
                 this.particles = [];
                 this.mp = Math.ceil(this.w * this.h / this.density);
-                for (var i = 0; i < this.mp; i++) {
-                    var size = Math.random() * 4 + 5;
+                for (let i = 0; i < this.mp; i++) {
+                    let size = Math.random() * 4 + 5;
                     this.particles.push({
-                        x: Math.random() * this.w, //x-coordinate
-                        y: Math.random() * this.h, //y-coordinate
-                        w: size,
-                        h: size,
-                        vy: this.minFallSpeed + Math.random(), //density
+                        x: Math.random() * this.w, y: Math.random() * this.h,
+                        w: size, h: size,
+                        vy: this.minFallSpeed + Math.random(),
                         vx: (Math.random() * this.maxHSpeed) - this.maxHSpeed / 2,
-                        fill: "#ffffff",
-                        s: (Math.random() * 0.2) - 0.1
+                        fill: "#4ade80" 
                     });
                 }
             },
-
             render() {
+                if (this.quit) return;
                 this.ctx.clearRect(0, 0, this.w, this.h);
-                this.particles.forEach((p, i) => {
-                    p.y += p.vy;
-                    p.x += p.vx;
+                this.particles.forEach(p => {
+                    p.y += p.vy; p.x += p.vx;
                     this.ctx.fillStyle = p.fill;
                     this.ctx.fillRect(p.x, p.y, p.w, p.h);
-                    if (p.x > this.w + 5 || p.x < -5 || p.y > this.h) {
-                        p.x = Math.random() * this.w;
-                        p.y = -10;
+                    if (p.x > this.w || p.x < 0 || p.y > this.h) {
+                        p.x = Math.random() * this.w; p.y = -10;
                     }
                 });
-                if (this.quit) {
-                    return;
-                }
                 requestAnimationFrame(this.render.bind(this));
-            },
-            destroy() {
-                this.quit = true;
             }
-
         };
 
-        var confetti = Snow.init();
-        // thanks hange
-        const thanks_msg = [
-            "NANNIYUNDAAA VANNATHIL",
-            "CLICK SOME MORE..",
-            "ENTHA MADUTHO:)",
-            "ORU CLICKUM KUDIYUM",
-            "PATICHA:)"
-        ];
-        let index = -1;
-        let j = 0;
+        // Thanks button & sequence
+        const thanks_msg = ["NANNIYUNDAAA VANNATHIL", "CLICK SOME MORE..", "ENTHA MADUTHO:)", "ORU CLICKUM KUDIYUM", "PATICHA:)"];
+        let tIndex = -1;
+        let jCount = 0;
+        let videoPlayed = false;
+        let codeListening = false;
 
-        function playvedio() {
+        function textchanging() {
+            const btn = document.querySelector(".thanks");
+            beat.currentTime = 0; beat.play();
+
+            if (jCount === 0 || jCount === 3 || jCount === 5 || jCount === 7 || jCount === 8) {
+                tIndex = (tIndex + 1) % thanks_msg.length;
+                btn.innerText = thanks_msg[tIndex];
+            } else {
+                btn.innerText = "KEEP GOING " + jCount;
+            }
+
+            if (jCount === 9) {
+                if (!videoPlayed) {
+                    playVideo();
+                    videoPlayed = true;
+                    jCount = 8;
+                } else {
+                    btn.innerText = "up,down,left,right";
+                    codeListening = true;
+                    jCount = 0;
+                }
+            }
+            jCount++;
+        }
+
+        function playVideo() {
             const video = document.getElementById("secretVideo");
             video.style.display = "block";
-            video.play();
-            // close vedio
-            video.addEventListener("ended", function () {
-                document.exitFullscreen();
+            document.querySelector('.thanks').style.display = "none";
+            video.play().catch(() => {});
+            video.onended = () => {
+                if(document.fullscreenElement) document.exitFullscreen();
                 document.getElementById("mysteryscreen").style.display = "none";
-                document.getElementById("maincontent").style.display = "block";
+                document.getElementById("maincontent").style.display = "flex";
                 video.style.display = "none";
-
-            });
-            video.requestFullscreen();
-
+                document.querySelector('.thanks').style.display = "block";
+            };
+            if(video.requestFullscreen) video.requestFullscreen();
         }
-        //status for  code
-        code_status = false;
-        //thanks text changing
-        vedio_state = true;
-        function textchanging() {
 
-            const button = document.querySelector(".thanks");
-            beat.currentTime = 0;
-            beat.play();
+        // Konami Arrow Keys
+        const secretCode = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
+        let keyBuffer = [];
+        
+        function handleKey(key) {
+            if(!codeListening) return;
+            if(navigator.vibrate) navigator.vibrate(50);
+            keyBuffer.push(key);
+            if (keyBuffer.length > 4) keyBuffer.shift();
 
-            if (j == 0 || j == 3 || j == 5 || j == 7 || j == 8) {
-                index = (index + 1) % thanks_msg.length;
-                button.innerText = thanks_msg[index];
+            if (keyBuffer.join(',') === secretCode.join(',')) {
+                codeListening = false;
+                startFinalSequence();
             }
-            else {
-
-                button.innerText = "KEEP GOING " + j;
-
-            }
-            if (j == 9) {
-                if (vedio_state) {
-
-                    playvedio();
-                    vedio_state = false;
-                    j = 8;
-                }
-                else {
-                    button.innerText = "up,down,left,right";
-                    code_status = true;
-                    j = 0;
-
-                }
-            }
-            j++;
         }
-        //typing beep
-        const type_beep = new Audio('type_beep.mp3')
-        //text display sequence
+
+        document.addEventListener("keydown", (e) => handleKey(e.key));
+
+        // Final Typing Sequence
         function startFinalSequence() {
             console.log("dha pedicho oru easter egg :https://www.youtube.com/watch?v=dQw4w9WgXcQ");
             document.querySelector(".thanks").style.display = "none";
             document.querySelector("#snow").style.display = "none";
 
-            const text =
-                "Hey there..\n\n" +
-                "Thanks a ton for hanging out on my site!\n" +
-                "Before you go...\n\n" +
-                "What should I call you?";
-
+            const msg = "Hey there..\n\nThanks a ton for hanging out on my site!\nBefore you go...\n\nWhat should I call you?";
             const el = document.querySelector("#final_bye");
             const inputBox = document.querySelector("#inputbox");
+            let cIndex = 0;
 
-            let index = 0;
-            const baseSpeed = 32;
-
-            function playTypeSound() {
-                const click = type_beep.cloneNode();
-                click.playbackRate = 1.4;
-                click.play();
-            }
-
-            function typeText() {
-                if (index >= text.length) {
+            function typeFinal() {
+                if (cIndex >= msg.length) {
                     inputBox.style.display = "block";
+                    inputBox.focus();
                     return;
                 }
-
-                const char = text[index];
+                const char = msg[cIndex];
                 el.textContent += char;
-
                 if (char !== " " && char !== "\n") {
-                    playTypeSound();
+                    const tSound = type_beep.cloneNode();
+                    tSound.play();
                 }
-
-                index++;
-                let delay = baseSpeed + Math.random() * 20;
-                if (char === "." || char === "\n") delay = 250;
-
-                setTimeout(typeText, delay);
+                cIndex++;
+                setTimeout(typeFinal, char === "\n" || char === "." ? 250 : 32 + Math.random() * 20);
             }
-
-            typeText();
+            typeFinal();
         }
 
-        //arrow code
-        const code = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
-        let keys = [];
-        //key comparison logic
-        function handleKey(key) {
-            navigator.vibrate(100);
-            keys.push(key);
-
-            // keep only last 4 inputs
-            if (keys.length > 4) {
-                keys.shift();
-            }
-
-            if (keys.toString() === code.toString()) {
-                code_status = false;
-                startFinalSequence();
-            }
-        }
-        //desktop arrow events
-        document.addEventListener("keydown", (e) => {
-            handleKey(e.key);
-        });
-        //mobile gesture
-        let startX = 0;
-        let startY = 0;
-
-        document.addEventListener("touchstart", (e) => {
-            startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
-        });
-
-        document.addEventListener("touchend", (e) => {
-            let endX = e.changedTouches[0].clientX;
-            let endY = e.changedTouches[0].clientY;
-
-            let dx = endX - startX;
-            let dy = endY - startY;
-
-            if (Math.abs(dx) > Math.abs(dy)) {
-                if (dx > 40) handleKey("ArrowRight");
-                else if (dx < -40) handleKey("ArrowLeft");
-            } else {
-                if (dy > 40) handleKey("ArrowDown");
-                else if (dy < -40) handleKey("ArrowUp");
-            }
-        });
-
-        //name storing
-        const input = document.getElementById("inputbox");
-
-        input.addEventListener("keydown", function (e) {
-            if (e.key === "Enter") {
-                localStorage.setItem("username", input.value);
+        // Name Save Logic
+        document.getElementById("inputbox").addEventListener("keydown", function (e) {
+            if (e.key === "Enter" && this.value.trim() !== "") {
+                localStorage.setItem("username", this.value);
                 document.getElementById("mysteryscreen").style.display = "none";
-                document.getElementById("maincontent").style.display = "block";
-                document.querySelector("#final_bye").style.display = "none";
-                document.querySelector("#inputbox").style.display = "none";
+                document.getElementById("maincontent").style.display = "flex";
+                document.querySelector("#final_bye").textContent = "";
+                this.style.display = "none";
                 document.querySelector("#snow").style.display = "block";
+                document.querySelector(".thanks").style.display = "block";
+                this.value = "";
+                executeShutdown(); 
             }
         });
-
 
     </script>
 </body>
-
 </html>
