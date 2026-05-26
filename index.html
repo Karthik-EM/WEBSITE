@@ -266,20 +266,36 @@
             #customCursor { display: none; }
             * { cursor: auto !important; }
             
-            /* Turn mobile menu into a compact 2-column grid */
-            .nav-tabs { 
-                display: grid; 
-                grid-template-columns: 1fr 1fr; 
-                gap: 4px; 
-                margin-bottom: 15px; 
-            }
-            .nav-tabs button { 
-                width: 100%; 
-                text-align: center; 
-                padding: 10px 5px; 
-                font-size: 10px; 
-                border-bottom: 2px solid var(--term-green); 
-            }
+            /* Replace the .nav-tabs inside @media (max-width: 768px) with this: */
+.nav-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 5px;
+    margin-bottom: 15px;
+    padding-bottom: 8px; /* space for the scrollbar */
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-tabs button {
+    flex: 0 0 auto; /* Prevents buttons from squishing */
+    width: auto;
+    text-align: center;
+    padding: 10px 15px;
+    font-size: 10px;
+    border-bottom: 2px solid var(--term-green);
+}
+
+/* Retro scrollbar styling for webkit browsers */
+.nav-tabs::-webkit-scrollbar {
+    height: 4px;
+}
+.nav-tabs::-webkit-scrollbar-track {
+    background: var(--term-bg);
+}
+.nav-tabs::-webkit-scrollbar-thumb {
+    background: var(--term-green);
+}
             
    
             
