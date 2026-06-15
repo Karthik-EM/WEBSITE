@@ -469,10 +469,10 @@
         <div class="nav-tabs">
             <button class="tab-btn active" data-target="about">ABOUT</button>
             <button class="tab-btn" data-target="skills">SKILLS</button>
+            <button class="tab-btn" data-target="system">Resume</button>
             <button class="tab-btn" data-target="edu">EDUCATION</button>
             <button class="tab-btn" data-target="projects">PROJECTS</button>
             <button class="tab-btn" data-target="contact">CONTACT</button>
-            <button class="tab-btn" data-target="system">Resume</button>
             <button class="tab-btn" style="margin-left: auto;" onclick="executeShutdown()"
                 data-target="system">SHUTDOWN</button>
 
@@ -646,7 +646,7 @@
                 pbeat.play();
                 document.getElementById("post-content").innerHTML += postlines[postIndex] + "<br>";
                 postIndex++;
-                setTimeout(showpostlines, 600);
+                setTimeout(showpostlines, 300);
             } else {
                 setTimeout(() => {
                     document.getElementById("postScreen").style.display = "none";
