@@ -44,18 +44,13 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            /* This creates the repeating horizontal lines */
             background: linear-gradient(to bottom,
                     rgba(255, 255, 255, 0) 50%,
                     rgba(0, 0, 0, 0.15) 50%
-                    /* Very low opacity (0.15) keeps it readable */
                 );
             background-size: 100% 4px;
-            /* Height of the scanlines */
             z-index: 9998;
-            /* Places it over the UI but under your custom cursor */
             pointer-events: none;
-            /* CRITICAL: Allows clicks to pass through the overlay */
         }
 
         /* Custom Cursor */
@@ -76,11 +71,11 @@
 
         /* POST Boot Screen */
         #postScreen {
+            display: none; 
             padding: 20px;
             font-size: 14px;
             line-height: 2;
             height: 100vh;
-            display: block;
         }
 
         .center-button {
@@ -113,7 +108,7 @@
 
         /* Main UI - Tabbed PhoenixBIOS Layout */
         #maincontent {
-            display: none;
+            display: flex; 
             flex-direction: column;
             height: 100vh;
             padding: 15px;
@@ -130,15 +125,23 @@
             line-height: 1.8;
         }
 
-        /* Horizontal Navigation Tabs */
+        /* Navigation Wrapper for absolute positioning on mobile */
+        .nav-wrapper {
+            position: relative;
+            margin-bottom: -2px; /* Pull down to overlap border */
+            z-index: 10;
+        }
+
+        /* Mobile Dropdown Toggle (Hidden on Desktop) */
+        .mobile-dropdown-toggle {
+            display: none;
+        }
+
+        /* Horizontal Navigation Tabs (Desktop) */
         .nav-tabs {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin-bottom: -2px;
-            /* Pull down to overlap border */
-            z-index: 10;
-            position: relative;
         }
 
         .nav-tabs button {
@@ -161,23 +164,13 @@
         }
 
         .mystery-btn {
-            margin-left: auto;
-            /* Pushes mystery button to the far right on desktop */
             animation: pulse-text 2s infinite;
         }
 
         @keyframes pulse-text {
-            0% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.5;
-            }
-
-            100% {
-                opacity: 1;
-            }
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
         }
 
         /* Central Content Window */
@@ -205,15 +198,8 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(5px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .tab-header {
@@ -369,7 +355,7 @@
             color: var(--term-bg);
         }
 
-        /* Responsive Tweaks */
+        /* Responsive Tweaks - Minimal Dropdown */
         @media (max-width: 768px) {
             #customCursor {
                 display: none;
@@ -379,47 +365,64 @@
                 cursor: auto !important;
             }
 
-            /* Replace the .nav-tabs inside @media (max-width: 768px) with this: */
-            .nav-tabs {
+            .nav-wrapper {
+                margin-bottom: 15px; /* Give space before content */
+            }
+
+            /* The single-line toggle button */
+            .mobile-dropdown-toggle {
                 display: flex;
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                gap: 5px;
-                margin-bottom: 15px;
-                padding-bottom: 8px;
-                /* space for the scrollbar */
-                -webkit-overflow-scrolling: touch;
+                justify-content: space-between;
+                align-items: center;
+                background: var(--term-bg);
+                border: 2px solid var(--term-green);
+                padding: 12px 15px;
+                font-size: 12px;
+                cursor: pointer;
+            }
+
+            /* Make the actual tabs hover over the content */
+            .nav-tabs {
+                display: none; /* Hidden by default */
+                flex-direction: column;
+                position: absolute;
+                top: calc(100% + 2px); /* Drop right below the toggle */
+                left: 0;
+                width: 100%;
+                background: var(--term-bg);
+                border: 2px solid var(--term-green);
+                z-index: 100;
+                box-shadow: 4px 4px 0px var(--term-shadow);
+                gap: 0;
+            }
+
+            .nav-tabs.open {
+                display: flex;
             }
 
             .nav-tabs button {
-                flex: 0 0 auto;
-                /* Prevents buttons from squishing */
-                width: auto;
-                text-align: center;
-                padding: 10px 15px;
+                width: 100%;
+                text-align: left;
+                padding: 15px;
                 font-size: 10px;
-                border-bottom: 2px solid var(--term-green);
+                border: none;
+                border-bottom: 1px dashed var(--term-green);
+                background: transparent;
             }
 
-            /* Retro scrollbar styling for webkit browsers */
-            .nav-tabs::-webkit-scrollbar {
-                height: 4px;
+            .nav-tabs button:last-child {
+                border-bottom: none;
             }
 
-            .nav-tabs::-webkit-scrollbar-track {
-                background: var(--term-bg);
-            }
-
-            .nav-tabs::-webkit-scrollbar-thumb {
+            .nav-tabs button.active {
                 background: var(--term-green);
+                color: var(--term-bg);
             }
-
-
 
             .content-window {
                 padding: 15px;
                 box-shadow: none;
-                border-top: none;
+                border-top: 2px solid var(--term-green); 
             }
 
             .tab-header h2 {
@@ -440,7 +443,35 @@
             }
 
             .bios-footer {
-                font-size: 10px;
+                font-size: 13px;
+            }
+            /* Retro boxed arrow button */
+            .dropdown-arrow {
+                display: inline-block;
+                border: 1px solid var(--term-green);
+                padding: 4px 8px;
+                background: var(--term-shadow);
+                transition: transform 0.2s ease;
+                /* Subtle blinking border to draw the user's eye */
+                animation: arrow-blink 1.5s infinite;
+            }
+
+            @keyframes arrow-blink {
+                0%, 100% { border-color: var(--term-green); }
+                50% { border-color: transparent; }
+            }
+
+            /* Invert colors when tapped */
+            .mobile-dropdown-toggle:active .dropdown-arrow {
+                background: var(--term-green);
+                color: var(--term-bg);
+            }
+
+            /* Flips the arrow upside down when the menu is open */
+            .mobile-dropdown-toggle.open .dropdown-arrow {
+                transform: rotate(180deg);
+                animation: none; /* Stop blinking when open */
+                border-color: var(--term-green);
             }
         }
     </style>
@@ -456,7 +487,7 @@
         <div id="post-content"></div>
         <div class="center-button" id="start-container">
             <button id="start">POWER ON</button>
-            <div class="desktop-warn">BEST VIEWED ON DESKTOP</div>
+            <div class="desktop-warn">SYSTEM READY TO BOOT</div>
         </div>
     </div>
 
@@ -466,57 +497,65 @@
             <div id="typewriter"></div>
         </div>
 
-        <div class="nav-tabs">
-            <button class="tab-btn active" data-target="about">ABOUT</button>
-            <button class="tab-btn" data-target="skills">SKILLS</button>
-            <button class="tab-btn" data-target="system">Resume</button>
-            <button class="tab-btn" data-target="edu">EDUCATION</button>
-            <button class="tab-btn" data-target="projects">PROJECTS</button>
-            <button class="tab-btn" data-target="contact">CONTACT</button>
-            <button class="tab-btn" style="margin-left: auto;" onclick="executeShutdown()"
-                data-target="system">SHUTDOWN</button>
+        <div class="nav-wrapper">
+            <div class="mobile-dropdown-toggle" id="mobileDropdownToggle">
+                <span>[ <span id="mobileActiveTabText">ABOUT</span> ]</span>
+               <span class="dropdown-arrow">&#9660;</span></div>
 
+            <div class="nav-tabs" id="navTabs">
+                <button class="tab-btn active" data-target="about">ABOUT</button>
+                <button class="tab-btn" data-target="skills">SKILLS</button>
+                <button class="tab-btn" data-target="resume">Resume</button>
+                <button class="tab-btn" data-target="edu">EDUCATION</button>
+                <button class="tab-btn" data-target="projects">PROJECTS</button>
+                <button class="tab-btn" data-target="contact">CONTACT</button>
+               <button class="tab-btn" style="margin-left: auto;" onclick="executeShutdown()">SHUTDOWN</button>
+            </div>
         </div>
 
         <div class="content-window">
-
             <div id="about" class="tab-pane active">
                 <div class="tab-header">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path
-                            d="M10 2h4v4h-4V2zM7 7h10v2h-2v13h-2v-6h-2v6H9V9H7V7zM5 5v2h2V5H5zm0 0H3V3h2v2zm14 0v2h-2V5h2zm0 0V3h2v2h-2z">
-                        </path>
+                        <path d="M10 2h4v4h-4V2zM7 7h10v2h-2v13h-2v-6h-2v6H9V9H7V7zM5 5v2h2V5H5zm0 0H3V3h2v2zm14 0v2h-2V5h2zm0 0V3h2v2h-2z"></path>
                     </svg>
                     <h2>ABOUT ME</h2>
                 </div>
-                <p>Hoi! I'm Karthik a random person on earth, who enjoys building things with code, curiosity, and an
-                    unhealthy attachment to free-tier services.</p>
-                <p>Lately, I’ve been working across backend systems, AI-powered tools, and embedded projects mostly by
-                    stitching together ideas, debugging strange errors, and seeing how far free infrastructure can be
-                    pushed before it politely asks for a credit card.</p>
-                <p>I’ve built projects ranging from assistive AI tools for the visually impaired and wildlife monitoring
-                    systems to business platforms, automation tools, and whatever random idea decides to occupy my brain
-                    at 2 AM.</p>
-                <p>I like building things that are useful, slightly unconventional, and interesting enough to keep me
-                    awake all night</p>
+                <p>Hoi! I'm Karthik a random person on earth, who enjoys building things with code, curiosity, and an unhealthy attachment to free-tier services.</p>
+                <p>Lately, I’ve been working across backend systems, AI-powered tools, and embedded projects mostly by stitching together ideas, debugging strange errors, and seeing how far free infrastructure can be pushed before it politely asks for a credit card.</p>
+                <p>I’ve built projects ranging from assistive AI tools for the visually impaired and wildlife monitoring systems to business platforms, automation tools, and whatever random idea decides to occupy my brain at 2 AM.</p>
+                <p>I like building things that are useful, slightly unconventional, and interesting enough to keep me awake all night</p>
             </div>
 
             <div id="skills" class="tab-pane">
                 <div class="tab-header">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path
-                            d="M8 5h2v2H8V5zM6 7h2v2H6V7zM4 9h2v2H4V9zm-2 2h2v2H2v-2zm2 2h2v2H4v-2zm2 2h2v2H6v-2zm2 2h2v2H8v-2zm8-12h-2v2h2V5zm2 2h-2v2h2V7zm2 2h-2v2h2V9zm2 2h-2v2h2v-2zm-2 2h-2v2h2v-2zm-2 2h-2v2h2v-2zm-2 2h-2v2h2v-2z">
-                        </path>
+                        <path d="M8 5h2v2H8V5zM6 7h2v2H6V7zM4 9h2v2H4V9zm-2 2h2v2H2v-2zm2 2h2v2H4v-2zm2 2h2v2H6v-2zm2 2h2v2H8v-2zm8-12h-2v2h2V5zm2 2h-2v2h2V7zm2 2h-2v2h2V9zm2 2h-2v2h2v-2zm-2 2h-2v2h2v-2zm-2 2h-2v2h2v-2zm-2 2h-2v2h2v-2z"></path>
                     </svg>
                     <h2>SKILLS</h2>
                 </div>
-                <ul>
-                    <li><strong>Frontend:</strong> HTML / CSS / JavaScript / React</li>
-                    <li><strong>Backend:</strong> Python / Flask / Django / PHP</li>
-                    <li><strong>Data & Cloud:</strong> PostgreSQL / MySQL / SQLite / Supabase / Render / Vercel</li>
-                    <li><strong>AI / Embedded:</strong> YOLO / OpenCV / ESP32 / Arduino / IoT</li>
-                    <li><strong>Tools:</strong> Git / GitHub Actions / Figma / VirtualBox</li>
-                </ul>
+                <div class="skills-grid">
+    <div class="skill-category">
+        <h3>FRONTEND</h3>
+        <p>HTML5, CSS3, JS, React</p>
+    </div>
+    <div class="skill-category">
+        <h3>BACKEND</h3>
+        <p>Python, Flask, Django, PHP</p>
+    </div>
+    <div class="skill-category">
+        <h3>DATA & CLOUD</h3>
+        <p>PostgreSQL, MySQL, SQLite, Supabase, Render, Vercel</p>
+    </div>
+    <div class="skill-category">
+        <h3>AI & EMBEDDED</h3>
+        <p>YOLO, OpenCV, ESP32, Arduino, IoT</p>
+    </div>
+    <div class="skill-category">
+        <h3>TOOLS</h3>
+        <p>Git, GitHub Actions, Figma, VirtualBox</p>
+    </div>
+</div>
             </div>
 
             <div id="edu" class="tab-pane">
@@ -528,32 +567,21 @@
                 </div>
                 <ul>
                     <li><strong>B.Tech in Computer Science and Engineering</strong></li>
-                    <p style="margin-top: 10px;">Adi Shankara Institute of Engineering Technology<br>Kalady,
-                        Kerala<br>2022 – 2026</p>
+                    <p style="margin-top: 10px;">Adi Shankara Institute of Engineering Technology<br>Kalady, Kerala<br>2022 – 2026</p>
                 </ul>
             </div>
 
             <div id="projects" class="tab-pane">
                 <div class="tab-header">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path
-                            d="M12 1h2v8h8v4h-2v-2h-8V5h-2V3h2V1zM8 7V5h2v2H8zM6 9V7h2v2H6zm-2 2V9h2v2H4zm10 8v2h-2v2h-2v-8H2v-4h2v2h8v6h2zm2-2v2h-2v-2h2zm2-2v2h-2v-2h2zm0 0h2v-2h-2v2z">
-                        </path>
+                        <path d="M12 1h2v8h8v4h-2v-2h-8V5h-2V3h2V1zM8 7V5h2v2H8zM6 9V7h2v2H6zm-2 2V9h2v2H4zm10 8v2h-2v2h-2v-8H2v-4h2v2h8v6h2zm2-2v2h-2v-2h2zm2-2v2h-2v-2h2zm0 0h2v-2h-2v2z"></path>
                     </svg>
                     <h2>PROJECTS</h2>
                 </div>
                 <ul>
-                    <li>Built an assistive tool <a href="https://github.com/TEAM-5-PROJECTS/Vision-assistant"
-                            target="_blank">"NETHRA"</a> for the visually impaired combining object detection (DETR),
-                        monocular depth estimation (UniDepthV2), and a vision-language model to generate spatially-aware
-                        scene descriptions.</li>
-                    <li>Built an <a
-                            href="https://github.com/Karthik-EM/Intelligent-Wildlife-Monitoring-System">"INTELLIGENT
-                            WILDLIFE MONITORING SYSTEM"</a> for real-time species classification (SpeciesNet), weapon
-                        detection (YOLOv26s), and gunshot recognition using IoT edge nodes and a Flask backend.</li>
-                    <li>Developed and deployed a <a href="https://rasaspices.vercel.app/" target="_blank">"RASA BRAND
-                            WEBSITE"</a> for a Kerala-based spice brand,presenting their product catalog with livestock
-                        status and dynamic pricing powered by Supabase.</li>
+                    <li>Built an assistive tool <a href="https://github.com/TEAM-5-PROJECTS/Vision-assistant" target="_blank">"NETHRA"</a> for the visually impaired combining object detection (DETR), monocular depth estimation (UniDepthV2), and a vision-language model to generate spatially-aware scene descriptions.</li>
+                    <li>Built an <a href="https://github.com/Karthik-EM/Intelligent-Wildlife-Monitoring-System">"INTELLIGENT WILDLIFE MONITORING SYSTEM"</a> for real-time species classification (SpeciesNet), weapon detection (YOLOv26s), and gunshot recognition using IoT edge nodes and a Flask backend.</li>
+                    <li>Developed and deployed a <a href="https://rasaspices.vercel.app/" target="_blank">"RASA BRAND WEBSITE"</a> for a Kerala-based spice brand,presenting their product catalog with livestock status and dynamic pricing powered by Supabase.</li>
                 </ul>
             </div>
 
@@ -564,22 +592,19 @@
                 <p>Ping me across the web:</p>
                 <ul class="contact_list">
                     <li><a href="mailto:karthikemmail@gmail.com"><img src="email.png" alt="Email"></a></li>
-                    <li><a href="https://github.com/Karthik-EM" target="_blank"><img src="github.png" alt="GitHub"></a>
-                    </li>
-                    <li><a href="https://www.linkedin.com/in/karthik-e-m-33449a292/" target="_blank"><img
-                                src="linkedin.png" alt="LinkedIn"></a></li>
+                    <li><a href="https://github.com/Karthik-EM" target="_blank"><img src="github.png" alt="GitHub"></a></li>
+                    <li><a href="https://www.linkedin.com/in/karthik-e-m-33449a292/" target="_blank"><img src="linkedin.png" alt="LinkedIn"></a></li>
                 </ul>
             </div>
 
-            <div id="system" class="tab-pane">
+            <div id="resume" class="tab-pane">
                 <div class="tab-header">
                     <h2>SYSTEM UTILITIES</h2>
                 </div>
                 <p>Load external resources or explore unknown protocols.</p>
 
-                <button class="action-button"
-                    onclick="window.open('https://drive.google.com/uc?export=download&id=1K0JwopllNkJj_0laJrqLfJfIxSbtpxpj', '_blank');">
-                    > INITIATE DATA DOWNLOAD (RESUME)
+                <button class="action-button" onclick="window.open('https://drive.google.com/uc?export=download&id=1K0JwopllNkJj_0laJrqLfJfIxSbtpxpj', '_blank');">
+                    > DOWNLOAD RESUME
                 </button>
                 <br>
                 <button class="action-button mystery-btn" onclick="triggerMystery()">???</button>
@@ -589,7 +614,6 @@
 
         <div class="bios-footer">All bugs are features ;]</div>
     </div>
-
 
     <div id="mysteryscreen">
         <canvas id="snow"></canvas>
@@ -622,11 +646,11 @@
         const type_beep = safeAudio('type_beep.mp3');
 
         // Hover sounds
-        document.querySelectorAll('button, .contact_list img').forEach(el => {
+        document.querySelectorAll('button, .contact_list img, #mobileDropdownToggle').forEach(el => {
             el.addEventListener('click', () => { beat.currentTime = 0; beat.play(); });
         });
 
-        // --- POST Screen Sequence ---
+        // --- POST Screen Sequence Data ---
         const username = localStorage.getItem("username") || "USER";
         const postlines = [
             `Welcome, ${username}`,
@@ -637,6 +661,17 @@
         ];
 
         let postIndex = 0;
+        
+        // --- Boot to Main System directly on Load ---
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                startup.currentTime = 0;
+                startup.play();
+                typeWriterTitle();
+            }, 300);
+        });
+
+        // Function used when powering on from shutdown state
         function showpostlines() {
             if (postIndex === 0) {
                 document.getElementById("start-container").style.display = "none";
@@ -670,9 +705,17 @@
             }
         }
 
-        // --- Tab Navigation Logic ---
+        // --- Tab & Mobile Navigation Logic ---
         const tabBtns = document.querySelectorAll('.tab-btn[data-target]');
         const tabPanes = document.querySelectorAll('.tab-pane');
+        const mobileDropdownToggle = document.getElementById('mobileDropdownToggle');
+        const navTabs = document.getElementById('navTabs');
+        const mobileActiveTabText = document.getElementById('mobileActiveTabText');
+
+        // Toggle dropdown open/close on mobile
+        mobileDropdownToggle.addEventListener('click', () => {
+            navTabs.classList.toggle('open');
+        });
 
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -684,6 +727,16 @@
                 btn.classList.add('active');
                 const targetId = btn.getAttribute('data-target');
                 document.getElementById(targetId).classList.add('active');
+
+                // Update mobile text, unless it's the shutdown button
+                if (targetId !== 'system') {
+                    mobileActiveTabText.innerText = btn.innerText;
+                }
+
+                // Auto-close dropdown on mobile
+                if (window.innerWidth <= 768) {
+                    navTabs.classList.remove('open');
+                }
             });
         });
 
@@ -700,6 +753,9 @@
             tabPanes.forEach(p => p.classList.remove('active'));
             tabBtns[0].classList.add('active');
             tabPanes[0].classList.add('active');
+            
+            // Reset Mobile Text
+            mobileActiveTabText.innerText = "ABOUT";
 
             postIndex = 0; twIndex = 0;
         }
