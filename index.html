@@ -88,7 +88,7 @@
         pointer-events: none;
         width: 60px;
         height: 60px;
-        z-index: 999;
+        z-index: 9999;
     }
 
     #cursorImage {
@@ -528,6 +528,20 @@
 </style>
 
 <body>
+    <!-- New Site Redirect Prompt -->
+    <div id="new-site-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: black; z-index: 9999; display: flex; justify-content: center; align-items: center;">
+        <div style="background-color: #252dc4; border: 2px solid white; text-align: center; box-shadow: 10px 10px 0px black; padding: 20px; max-width: 80%; z-index: 10000;">
+            <div style="color: white; line-height: 1.8; margin-bottom: 20px; font-size: 14px;">
+                SYSTEM UPDATE DETECTED:<br><br>A NEWER VERSION OF THIS PORTFOLIO EXISTS.<br>DO YOU WISH TO REDIRECT?
+            </div>
+            <div>
+                <!-- Redirects to new site -->
+               <button class="yes" onclick="window.location.href='https://iamkarthik.vercel.app/'">YES</button>
+                <!-- Closes the prompt and continues to old site -->
+                <button class="no" onclick="document.getElementById('new-site-overlay').style.display='none'">NO</button>
+            </div>
+        </div>
+    </div>
     <!-- custom cursor -->
     <div id="customCursor">
         <img src="stickmanstop.png" id="cursorImage">
